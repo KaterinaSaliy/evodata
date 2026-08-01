@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# шаблон змінних середовища — має бути в репозиторії (виняток до .env*)
+!.env.example
+
+# редактори
+/.idea
+/.vscode

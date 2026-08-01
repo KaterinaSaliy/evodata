@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/**
+ * Дизайн-токени (Tailwind v4, CSS-first).
+ * Значення взяті з Figma (get_variable_defs, файл kVYb1t9QxeNvlhFbSSpfbC).
+ * Довідник — docs/figma-map.md.
+ */
+@theme {
+  /* Бренд */
+  --color-brand: #4264f6;
+  --color-brand-hover: #3452e8;
+
+  /* Сіра шкала (Gray/*) */
+  --color-gray-900: #101828;
+  --color-gray-600: #475467;
+  --color-gray-500: #667085;
+  --color-gray-400: #98a2b3;
+  --color-gray-300: #d0d5dd;
+  --color-gray-200: #eaecf0;
+  --color-gray-50: #f9fafb;
+
+  /* Семантичні псевдоніми */
+  --color-ink: #101828; /* заголовки */
+  --color-body: #475467; /* основний текст */
+  --color-surface: #ffffff;
+  --color-surface-2: #f9fafb; /* чергування секцій */
+
+  /* Типографічна шкала (Figma → Tailwind).
+     sm 14/20, base 16/24 та lg 18/28 збігаються з дефолтами Tailwind. */
+  --text-xl: 20px;
+  --text-xl--line-height: 30px;
+
+  --text-display-xs: 24px;
+  --text-display-xs--line-height: 32px;
+
+  --text-display-xl: 60px;
+  --text-display-xl--line-height: 72px;
+  --text-display-xl--letter-spacing: -2px;
+
+  /* Заголовки секцій головної */
+  --text-display-2xl: 72px;
+  --text-display-2xl--line-height: 80px;
+  --text-display-2xl--letter-spacing: -1.44px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Горизонтальні слайдери гортаються, але системний скролбар не показуємо. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
+/* Шрифти прив'язуємо inline — вони посилаються на runtime-змінні next/font. */
+@theme inline {
+  --font-sans:
+    var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }

@@ -1,0 +1,96 @@
+/**
+ * Універсальний рендерер текстових блоків для вкладок і розгорнутих секцій.
+ * Макети (What We Do 9325:1161, Industries 9329:4329) складаються з одного
+ * набору типів блоків у різних комбінаціях, тому опис контенту — це масив.
+ */
+export type RichBlock =
+  /** Малий заголовок 24/32 */
+  | { type: "kicker"; text: string }
+  /** Великий заголовок-антиква 48/60 */
+  | { type: "heading"; text: string }
+  /** Підзаголовок усередині блоку 24/32 */
+  | { type: "subheading"; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "bullets"; items: readonly string[] }
+  | { type: "definitions"; items: readonly { title: string; text: string }[] };
+
+export function RichBlocks({ blocks }: { blocks: readonly RichBlock[] }) {
+  return (
+    <div className="flex flex-col gap-6">
+      {blocks.map((block, index) => {
+        switch (block.type) {
+          case "kicker":
+            return (
+              <p
+                key={index}
+                className="text-ink text-xl font-semibold lg:text-[24px] lg:leading-8"
+              >
+                {block.text}
+              </p>
+            );
+
+          case "heading":
+            return (
+              <h3
+                key={index}
+                className="text-ink font-serif text-[28px] leading-[1.15] tracking-[-0.02em] sm:text-[36px] lg:text-[48px] lg:leading-[60px]"
+              >
+                {block.text}
+              </h3>
+            );
+
+          case "subheading":
+            return (
+              <h4
+                key={index}
+                className="text-ink text-xl font-semibold lg:text-[24px] lg:leading-8"
+              >
+                {block.text}
+              </h4>
+            );
+
+          case "paragraph":
+            return (
+              <p key={index} className="text-body text-lg lg:text-xl">
+                {block.text}
+              </p>
+            );
+
+          case "bullets":
+            return (
+              <ul key={index} className="flex flex-col gap-[14px]">
+                {block.items.map((item) => (
+                  <li key={item} className="flex items-start gap-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/icon-bullet.svg"
+                      alt=""
+                      aria-hidden="true"
+                      className="mt-2 h-[18px] w-[6px] shrink-0"
+                    />
+                    <span className="text-body text-lg lg:text-xl">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            );
+
+          case "definitions":
+            return (
+              <dl key={index} className="flex flex-col gap-6">
+                {block.items.map((item) => (
+                  <div key={item.title} className="flex flex-col gap-1">
+                    <dt className="text-ink text-lg font-semibold lg:text-xl">
+                      {item.title}
+                    </dt>
+                    <dd className="text-body text-lg lg:text-xl">
+                      {item.text}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            );
+        }
+      })}
+    </div>
+  );
+}

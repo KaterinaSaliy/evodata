@@ -1,0 +1,173 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { siteConfig } from "@/config/site";
+import { Logo } from "./Logo";
+import { NavDropdown } from "./NavDropdown";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { MenuIcon, CloseIcon, ChevronDownIcon } from "@/components/ui/icons";
+import { cn } from "@/lib/utils";
+
+/**
+ * Шапка сайту — Figma node 9137:50051 (висота 80, прозорий фон поверх героя).
+ * Активний пункт навігації підкреслено. На <lg — бургер-меню (node 9419:1182).
+ */
+export function Header() {
+  const [open, setOpen] = useState(false);
+  /** href пункта з розгорнутим підменю в мобільному меню. */
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const pathname = usePathname();
+
+  // Блокуємо скрол сторінки, поки відкрите мобільне меню.
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  return (
+    <header className="absolute inset-x-0 top-0 z-50 text-white">
+      {/* Висота шапки: 72 на мобільному (node 9406:50031), 80 на десктопі */}
+      <div className="mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between pr-3 pl-4 sm:px-8 lg:h-20 lg:pr-8 lg:pl-[59px]">
+        <Link
+          href="/"
+          aria-label={siteConfig.name}
+          onClick={() => setOpen(false)}
+        >
+          <Logo className="w-[104px]" />
+        </Link>
+
+        {/* Десктопна навігація */}
+        <nav className="hidden items-center gap-8 lg:flex">
+          {siteConfig.nav.map((item) =>
+            item.menu ? (
+              <NavDropdown
+                key={item.href}
+                item={{ ...item, menu: item.menu }}
+                isActive={isActive(item.href)}
+              />
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className={cn(
+                  "text-base font-semibold transition-opacity hover:opacity-80",
+                  isActive(item.href) && "underline underline-offset-8",
+                )}
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
+        </nav>
+
+        <div className="hidden lg:block">
+          <LanguageSwitcher />
+        </div>
+
+        {/* Бургер (мобільний/планшет) */}
+        <button
+          type="button"
+          className="rounded-lg p-2 lg:hidden"
+          aria-label="Open menu"
+          aria-expanded={open}
+          onClick={() => setOpen(true)}
+        >
+          <MenuIcon className="size-6" />
+        </button>
+      </div>
+
+      {/* Мобільне меню (node 9419:1182) */}
+      {open ? (
+        <div className="bg-brand fixed inset-0 z-50 flex flex-col overflow-hidden text-white lg:hidden">
+          {/* Декоративний 3D-об'єкт праворуч, як у макеті */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/hero-glass.webp"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute top-[12%] -right-[35%] w-[110%] max-w-none"
+          />
+
+          <div className="relative flex h-[72px] items-center justify-between pr-3 pl-4 sm:px-8">
+            <Logo className="w-[104px]" />
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+            >
+              <CloseIcon className="size-7" />
+            </button>
+          </div>
+
+          {/* Мобільна навігація: пункти з підменю розгортаються (node 9413:92974) */}
+          <nav className="no-scrollbar relative flex flex-1 flex-col gap-6 overflow-y-auto px-4 pt-6 sm:px-8">
+            {siteConfig.nav.map((item) => (
+              <div key={item.href} className="flex flex-col gap-3">
+                <div className="flex items-center justify-between gap-4">
+                  <Link
+                    href={item.href}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    className={cn(
+                      "text-base font-semibold",
+                      isActive(item.href) && "underline underline-offset-8",
+                    )}
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+
+                  {item.menu ? (
+                    <button
+                      type="button"
+                      aria-expanded={expanded === item.href}
+                      aria-label={`${item.label} submenu`}
+                      onClick={() =>
+                        setExpanded(expanded === item.href ? null : item.href)
+                      }
+                      className="cursor-pointer p-1"
+                    >
+                      <ChevronDownIcon
+                        className={cn(
+                          "size-5 transition-transform",
+                          expanded === item.href && "rotate-180",
+                        )}
+                      />
+                    </button>
+                  ) : null}
+                </div>
+
+                {item.menu && expanded === item.href ? (
+                  <ul className="flex flex-col gap-3 pl-4">
+                    {item.menu.items.map((subItem) => (
+                      <li key={subItem}>
+                        <Link
+                          href={item.href}
+                          onClick={() => setOpen(false)}
+                          className="text-sm text-white/80 transition-colors hover:text-white"
+                        >
+                          {subItem}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ))}
+          </nav>
+
+          <div className="relative px-4 pt-10 sm:px-8">
+            <LanguageSwitcher variant="panel" />
+          </div>
+        </div>
+      ) : null}
+    </header>
+  );
+}

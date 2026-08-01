@@ -1,36 +1,184 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EvoData — корпоративний сайт
 
-## Getting Started
+Статичний корпоративний сайт EvoData за ТЗ «Evo Data V1.1 без CMS».
+Верстка виконана 1:1 з макета Figma.
 
-First, run the development server:
+**Стек:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · ESLint + Prettier.
+Без CMS, бекенду, бази даних і серверної частини — увесь контент лежить у коді.
+
+---
+
+## Запуск
+
+Потрібен **Node.js ≥ 20.9**.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install     # встановлення залежностей
+npm run dev     # режим розробки → http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Збірка та продакшн
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production-збірка
+npm run start   # запуск зібраного застосунку → http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Додаткові команди:
 
-## Learn More
+```bash
+npm run lint         # ESLint
+npm run typecheck    # перевірка типів TypeScript
+npm run format       # форматування Prettier
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Змінні середовища
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Скопіюйте `.env.example` у `.env.local` і заповніть значення:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Змінна | Призначення |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Базова URL сайту — використовується для canonical, OpenGraph і `sitemap.xml` |
+| `NEXT_PUBLIC_GA_ID` | Google Analytics 4. Якщо порожньо — скрипт не підключається |
+| `NEXT_PUBLIC_META_PIXEL_ID` | Meta Pixel. Якщо порожньо — скрипт не підключається |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Як змінювати контент
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Проєкт свідомо розділяє **контент** і **розмітку**, щоб тексти можна було правити
+без знання React.
+
+| Що змінити | Де |
+| --- | --- |
+| Тексти сторінок | `src/content/en/*.ts` (наприклад `home.ts`) |
+| Наскрізні тексти (футер) | `src/content/en/common.ts` |
+| Контакти, соцмережі, пункти меню | `src/config/site.ts` |
+| Мови | `src/config/i18n.ts` |
+| Кольори, шрифти, типографіка | `src/app/globals.css` (блок `@theme`) |
+| Зображення, відео, шрифти | `public/images`, `public/videos`, `public/fonts` |
+| SEO за замовчуванням | `src/app/layout.tsx` (об'єкт `metadata`) |
+| Мапа сайту / robots | `src/app/sitemap.ts`, `src/app/robots.ts` |
+
+### Заміна зображень
+
+Файли лежать у `public/images/`. Достатньо покласти файл із тим самим ім'ям —
+шляхи вказані у `src/content/en/*.ts`. Рекомендований формат — **WebP**.
+Приклад конвертації (пакет `sharp` уже є в залежностях):
+
+```bash
+node -e "require('sharp')('in.png').resize(1800).webp({quality:85}).toFile('out.webp')"
+```
+
+### Відео
+
+Блок відео на головній працює у двох режимах:
+
+- `src` порожній (типово) — показується лише постер;
+- `src` заданий — постер стає кнопкою, за кліком вмикається програвач.
+
+Покладіть файл у `public/videos/` і вкажіть шлях у `src/content/en/home.ts` → `video.src`.
+
+---
+
+## Структура
+
+```
+src/
+├── app/                  маршрути, кореневий layout, sitemap.ts, robots.ts
+├── components/
+│   ├── layout/           Header, Footer, Container, Logo
+│   ├── sections/home/    секції головної сторінки (по одному файлу на блок)
+│   ├── ui/               кнопки, іконки, слайдери, перемикач мови
+│   ├── seo/              JSON-LD (Schema.org)
+│   └── analytics/        GA4 і Meta Pixel
+├── config/               site.ts, i18n.ts
+├── content/<locale>/     усі тексти
+└── lib/                  утиліти (cn) і схеми Schema.org
+```
+
+Кожен блок макета — окремий перевикористовуваний компонент.
+Відповідність компонентів вузлам Figma описана в `docs/figma-map.md`.
+
+## Статус сторінок
+
+| Сторінка | Маршрут | Стан |
+| --- | --- | --- |
+| Home | `/` | готова (desktop + mobile, Lighthouse перевірено) |
+| FAQ | `/faq` | готова |
+| What we do | `/what-we-do` | готова (вкладки Roadmaps інтерактивні) |
+| Industries | `/industries` | готова |
+| About us | `/about` | готова |
+
+Окремої сторінки Contact у макеті немає — блок «Get in touch» розміщений на
+About us, тому пункт «Contact» у футері веде на якір `/about#contact`.
+
+## Мультимовність
+
+ТЗ вимагає **архітектурної** підтримки: активна одна локаль (`en`), але всі тексти
+винесені у `src/content/<locale>/`, а перелік мов — у `src/config/i18n.ts`.
+Щоб додати мову: створити теку контенту, додати локаль у конфіг і (за потреби)
+загорнути маршрути в сегмент `[lang]`.
+
+---
+
+## Якість
+
+Lighthouse на продакшн-збірці, **мобільний профіль** (усі сторінки):
+
+| Сторінка | Performance | Accessibility | Best Practices | SEO |
+| --- | --- | --- | --- | --- |
+| `/` | 97 | 96 | 100 | 100 |
+| `/what-we-do` | 97 | 97 | 100 | 100 |
+| `/industries` | 92 | 97 | 100 | 100 |
+| `/about` | 98 | 96 | 100 | 100 |
+| `/faq` | 99 | 96 | 100 | 100 |
+
+Головна на desktop-профілі: **100 / 96 / 96 / 100**.
+
+Дві правки, які найбільше вплинули на результат — варто пам'ятати під час розробки:
+
+- **`sizes` має відповідати реальному розміру зображення на екрані.** Завищене
+  значення змушувало браузер тягнути надто великий варіант: LCP 3.6 с, Performance 90.
+- **`size-[%]` рахує відсотки окремо від ширини й висоти** контейнера, тому квадратний
+  3D-об'єкт у героях внутрішніх сторінок був спотвореним. Правильно — `w-[%] aspect-square`.
+
+Адаптивність перевірено на 320 / 375 / 768 / 1024 / 1440 / 1920 px — горизонтального
+переповнення немає на жодній ширині.
+
+---
+
+## Відкриті питання до дизайну
+
+1. **Контраст.** Два елементи макета не проходять WCAG AA: підпис `Case Study • …`
+   (`#98A2B3` на білому, 2.57) і `Let's talk` у футері (`white/50` на `#4264F6`, 2.32).
+   Залишено як у макеті — потрібне рішення дизайнера.
+2. **Картка Case Study** (node `9165:260211`): текст заданий білим на білій картці.
+   Використано основний колір тексту, щоб він був читабельним.
+3. **AI Implementation Roadmaps**: у макеті головної розкрито контент лише фази
+   «Pre-Sales Phase». Список фаз статичний; компонент готовий до перемикання
+   вкладками, щойно надійдуть тексти решти фаз.
+4. **Відео**: у макеті стокове зображення-заглушка. Потрібен фінальний постер і файл відео.
+5. **Рядок переваг у Hero** зміщений на +7px (поля 64/50). Вирівняно симетрично від 64px.
+6. **Куди ведуть пункти підменю.** Підменю реалізоване (nodes `9247:100973`,
+   `9254:101016`), але окремих сторінок під 8 підпунктів у макеті немає, тому всі
+   ведуть на батьківський розділ (`/what-we-do`, `/industries`). Якщо планувалися
+   окремі сторінки або якорі — потрібен список адрес.
+7. **Кнопки героя** («Book a Discovery Call», «Contact Us» на What We Do): у макеті
+   видно лише текст 18px без явних стилів заливки. Використано стилі з компонент-сету
+   `9423:1785` — варто звірити з дизайнером.
+8. **Вкладки на What We Do** (секція `9325:1161`) — під'єднані. З 6 підписів у макеті є
+   контент для 4 (MVP Development, Founders, Business Owners, CTOs); дві останні
+   вкладки («Testing, Validation…», «Deployment…») контенту не мають і лишаються
+   неактивними — потрібні тексти.
+9. **Вкладки на Industries** (секція `9329:4329`) — під'єднана лише перша.
+   Приховані фрейми цієї секції містять контент **зі сторінки What We Do**
+   (MVP Development / For Founders / For Business Owners) — очевидно, залишки
+   копіювання компонента: вони не відповідають підписам вкладок Industries
+   («You Have a Product Idea…», «MVP Has Proven Demand…» тощо). Під'єднувати їх
+   означало б показати чужий текст, тому решта вкладок неактивні до отримання
+   правильного контенту.
+10. **Порядок секцій на Industries.** У макеті білий блок «Our custom solutions»
+    стоїть **над** синім героєм (y=0 проти y=699), хоча на всіх інших сторінках
+    герой перший. Оскільки шапка прозора зі світлим текстом, над білим блоком вона
+    була б нечитабельною, тож реалізовано звичний порядок: герой → контент.
