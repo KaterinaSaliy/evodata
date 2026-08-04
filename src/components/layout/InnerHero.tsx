@@ -9,22 +9,22 @@ type HeroAction = {
 };
 
 type InnerHeroProps = {
-  /** Підпис поточної сторінки у хлібних крихтах. */
+  /** Label of the current page in the breadcrumbs. */
   breadcrumb: string;
-  /** Заголовок; `\n` — перенос рядка з макета. */
+  /** Heading; `\n` — line break from the design. */
   title: string;
-  /** Підзаголовок; `\n` — перенос рядка з макета. */
+  /** Subheading; `\n` — line break from the design. */
   subtitle: string;
-  /** 3D-об'єкт праворуч. За замовчуванням — об'єкт зі сторінки FAQ. */
+  /** 3D object on the right. Defaults to the one from the FAQ page. */
   image?: string;
-  /** Кнопки заклику (є, наприклад, на What We Do). */
+  /** Call-to-action buttons (present on What We Do, for example). */
   actions?: readonly HeroAction[];
 };
 
 /**
- * Герой внутрішніх сторінок — Figma node 9376:5911 (1440×600, фон #4264F6).
- * Спільний для What We Do / Industries / About Us / FAQ: фонове коло, повернутий
- * 3D-об'єкт, затемнення під шапкою, хлібні крихти, заголовок і підзаголовок.
+ * Hero of the inner pages — Figma node 9376:5911 (1440×600, #4264F6).
+ * Shared by What We Do / Industries / About Us / FAQ: background circle, rotated
+ * 3D object, gradient under the header, breadcrumbs, heading and subheading.
  */
 export function InnerHero({
   breadcrumb,
@@ -35,9 +35,9 @@ export function InnerHero({
 }: InnerHeroProps) {
   return (
     <section className="bg-brand relative isolate overflow-hidden text-white">
-      {/* --- Фонові шари --- */}
+      {/* --- Background layers --- */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        {/* Радіальне коло (той самий ассет, що й на головній) */}
+        {/* Radial circle (the same asset as on the home page) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/hero-glow.svg"
@@ -45,9 +45,9 @@ export function InnerHero({
           className="absolute top-0 left-[-16.46%] w-[171.18%] max-w-none -translate-y-[40%]"
         />
 
-        {/* 3D-об'єкт, повернутий на -83.16° (node 9376:6279) */}
-        {/* aspect-square + ширина: `size-[%]` рахує відсотки окремо від ширини
-            й висоти секції, через що квадратний об'єкт спотворювався. */}
+        {/* 3D object, rotated by -83.16° (node 9376:6279) */}
+        {/* aspect-square plus width: `size-[%]` resolves percentages against
+            width and height separately, which distorted the square object. */}
         <div className="absolute top-[-30%] left-[35%] flex aspect-square w-[97.8%] items-center justify-center lg:top-[-457px] lg:w-[1408px]">
           <Image
             src={image}
@@ -55,20 +55,20 @@ export function InnerHero({
             width={1600}
             height={1600}
             priority
-            // Реальний розмір: 97.8% ширини секції × 89.9% ≈ 88vw на всіх екранах.
-            // Завищене значення змушувало браузер тягнути надто великий варіант (LCP).
+            // Real size: 97.8% of the section width × 89.9% ≈ 88vw on every screen.
+            // An overstated value made the browser fetch too large a variant (LCP).
             sizes="88vw"
             className="h-auto w-[89.9%] max-w-none -rotate-[83.16deg]"
           />
         </div>
 
-        {/* Затемнення під шапкою */}
+        {/* Gradient under the header */}
         <div className="absolute inset-x-0 top-0 h-[196px] bg-linear-to-b from-[rgba(42,57,218,0.8)] from-[13.662%] to-[rgba(42,57,218,0)] mix-blend-multiply" />
       </div>
 
-      {/* --- Контент --- */}
+      {/* --- Content --- */}
       <Container className="relative pt-[104px] pb-16 lg:h-[600px] lg:pt-0 lg:pb-0 lg:pl-[59px]">
-        {/* Хлібні крихти (node 9376:5965) */}
+        {/* Breadcrumbs (node 9376:5965) */}
         <nav aria-label="Breadcrumb" className="lg:absolute lg:top-[110px]">
           <ol className="flex items-center gap-3 text-sm">
             <li>
@@ -89,7 +89,7 @@ export function InnerHero({
           </ol>
         </nav>
 
-        {/* Заголовок і підзаголовок (node 9376:5961) */}
+        {/* Heading and subheading (node 9376:5961) */}
         <div className="mt-8 flex max-w-[828px] flex-col gap-5 lg:absolute lg:top-[247px] lg:mt-0 lg:w-[828px]">
           <h1 className="font-serif text-[36px] leading-[1.05] whitespace-pre-line sm:text-[48px] lg:text-[64px] lg:leading-[64px]">
             {title}
@@ -100,7 +100,9 @@ export function InnerHero({
             <div className="mt-4 flex flex-wrap gap-4">
               {actions.map((action, index) => (
                 <Button
-                  key={action.href}
+                  // Not by href: both buttons in the What We Do hero point at
+                  // the same anchor, so the keys would collide.
+                  key={action.label}
                   href={action.href}
                   variant={index === 0 ? "primary" : "secondary"}
                 >

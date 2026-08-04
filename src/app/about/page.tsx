@@ -26,13 +26,13 @@ export const metadata: Metadata = {
 
 const { contact, technologies, band, inDemand, services, whyChoose } = about;
 
-/** Сторінка About Us — Figma node 9331:12591. */
+/** About Us page — Figma node 9331:12591. */
 export default function AboutPage() {
   return (
     <>
       <InnerHero {...about.hero} image="/images/glass-about-hero.webp" />
 
-      {/* Get in touch — node 9373:12959. Якір для посилання «Contact» у футері. */}
+      {/* Get in touch — node 9373:12959. Anchor for the footer "Contact" link. */}
       <section id="contact" className="bg-surface-2 py-16 lg:py-24">
         <Container className="flex flex-col gap-8 lg:gap-12">
           <SectionHeading>{contact.title}</SectionHeading>
@@ -78,7 +78,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Таблиця стеку — на вузьких екранах гортається горизонтально */}
+          {/* Stack table — scrolls horizontally on narrow screens */}
           <div className="no-scrollbar overflow-x-auto">
             <table className="w-full min-w-[860px] border-collapse text-left">
               <thead>
@@ -157,7 +157,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Брендова смуга з глобусом — node 9337:12684 */}
+      {/* Brand band with the globe — node 9337:12684 */}
       <BrandBand title={band.title} />
 
       {/* Our Most In-Demand AI Solutions — node 9337:12674 */}
@@ -206,7 +206,7 @@ export default function AboutPage() {
             </article>
           ))}
 
-          {/* Картка-підказка «DRAG» */}
+          {/* "DRAG" hint card */}
           <div className="relative h-[804px] w-[419px] shrink-0 overflow-hidden rounded-xl shadow-sm">
             <Image
               src={inDemand.dragImage}
@@ -235,7 +235,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Розгорнуті напрями — node 9372:1069 */}
+      {/* Expanded solution areas — node 9372:1069 */}
       <section className="bg-surface py-16 lg:py-24">
         <Container className="flex flex-col gap-10 lg:gap-16">
           {services.headings.map((heading) => (
@@ -264,7 +264,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Цитата і відео — спільні блоки */}
+      {/* Quote and video — shared blocks */}
       <Quote />
       <VideoSection />
     </>

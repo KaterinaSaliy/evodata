@@ -5,11 +5,11 @@ type LogoProps = {
 };
 
 /**
- * Логотип «evo data» — векторні ассети, експортовані з Figma (node 9137:50055).
- * Базовий бокс макета — 104×24; частини позиційовані у відсотках, тож логотип
- * масштабується будь-якою шириною через `className` (напр. `w-[104px]`).
+ * The "evo data" logo — vector assets exported from Figma (node 9137:50055).
+ * Base box in the design is 104×24; the parts are positioned in percentages, so
+ * the logo scales to any width set through `className` (e.g. `w-[104px]`).
  *
- * Ассети залиті білим — у макеті логотип завжди на синьому/темному фоні.
+ * The assets are filled white — in the design the logo always sits on blue/dark.
  */
 export function Logo({ className }: LogoProps) {
   return (

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 
-/** robots.txt (доступний за адресою /robots.txt). */
+/** robots.txt (served at /robots.txt). */
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {

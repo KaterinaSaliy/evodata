@@ -5,23 +5,23 @@ import { cn } from "@/lib/utils";
 
 export type TabItem = {
   label: string;
-  /** Панель. Якщо не задана — пункт неактивний (у макеті для нього немає контенту). */
+  /** Panel. Without it the item is disabled (the design has no copy for it). */
   panel?: ReactNode;
 };
 
 type TabsProps = {
   items: readonly TabItem[];
-  /** Ширина бічного списку (у макетах — 459px). */
+  /** Width of the side list (459px in the designs). */
   listClassName?: string;
   className?: string;
 };
 
 /**
- * Вкладки з вертикальним списком ліворуч — макет секції 9325:1161.
- * Активний пункт кольору бренду, як у `TopicList`.
+ * Tabs with a vertical list on the left — design of section 9325:1161.
+ * The active item takes the brand colour, as in `TopicList`.
  *
- * Панелі приходять уже відрендереними з серверного компонента, тому весь текст
- * присутній у HTML (важливо для SEO) — клієнт лише перемикає видимість.
+ * Panels arrive already rendered from a server component, so all the copy is
+ * present in the HTML (important for SEO) — the client only toggles visibility.
  */
 export function Tabs({ items, listClassName, className }: TabsProps) {
   const firstEnabled = items.findIndex((item) => item.panel);
@@ -75,6 +75,9 @@ export function Tabs({ items, listClassName, className }: TabsProps) {
               id={`${baseId}-panel-${index}`}
               aria-labelledby={`${baseId}-tab-${index}`}
               hidden={active !== index}
+              // Coming back from `display: none` restarts the CSS animation, so
+              // the panel fades in every time it is selected.
+              className="animate-fade-in motion-reduce:animate-none"
             >
               {item.panel}
             </div>

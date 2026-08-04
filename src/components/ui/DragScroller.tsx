@@ -10,11 +10,11 @@ type DragScrollerProps = {
 };
 
 /**
- * Горизонтальна стрічка з перетягуванням мишею (підказка «DRAG» у макеті).
+ * Horizontal strip dragged with the mouse (the "DRAG" hint in the design).
  *
- * Тач і тачпад користуються нативним скролом — перехоплюємо лише мишу, щоб не
- * ламати інерційну прокрутку на мобільних. Контейнер фокусується з клавіатури
- * (стрілки прокручують нативно).
+ * Touch and trackpad use native scrolling — only the mouse is intercepted, so
+ * momentum scrolling on mobile stays intact. The container is focusable
+ * (arrow keys scroll it natively).
  */
 export function DragScroller({
   children,
@@ -66,9 +66,9 @@ export function DragScroller({
       onPointerMove={handlePointerMove}
       onPointerUp={stopDragging}
       onPointerCancel={stopDragging}
-      // Нативний drag-and-drop зображень перехоплював вказівник, і замість
-      // стрічки користувач тягнув саму картинку. Подія спливає, тому одного
-      // обробника на контейнері досить для всього вмісту.
+      // Native image drag-and-drop hijacked the pointer, so dragging from a
+      // photo moved the image instead of the strip. The event bubbles, so one
+      // handler on the container covers everything inside.
       onDragStart={(event) => event.preventDefault()}
       className={cn(
         "no-scrollbar overflow-x-auto",

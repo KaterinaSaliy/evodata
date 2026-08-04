@@ -13,11 +13,11 @@ type NavDropdownProps = {
 };
 
 /**
- * Пункт головного меню з випадним підменю — Figma nodes 9247:100973 (What We Do)
- * та 9254:101016 (Industries).
+ * Main-menu item with a dropdown — Figma nodes 9247:100973 (What We Do)
+ * and 9254:101016 (Industries).
  *
- * Панель відкривається наведенням і фокусом (клавіатура), закривається Escape,
- * кліком поза межами та втратою фокусу. Сам пункт лишається посиланням на розділ.
+ * The panel opens on hover and focus (keyboard), and closes on Escape, on a
+ * click outside and on blur. The item itself stays a link to the section.
  */
 export function NavDropdown({ item, isActive }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
@@ -80,14 +80,14 @@ export function NavDropdown({ item, isActive }: NavDropdownProps) {
         </button>
       </div>
 
-      {/* Панель підменю */}
+      {/* Submenu panel */}
       <div
         id={panelId}
         hidden={!open}
         className="absolute top-full left-1/2 z-50 -translate-x-1/2 pt-4"
       >
         <div className="flex overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08),0px_4px_6px_-2px_rgba(16,24,40,0.03)]">
-          {/* Картка розділу */}
+          {/* Section card */}
           <div className="bg-surface-2 shrink-0 p-5">
             <div className="flex h-full w-[240px] flex-col gap-6 rounded-lg p-3">
               <Image
@@ -126,7 +126,7 @@ export function NavDropdown({ item, isActive }: NavDropdownProps) {
             </div>
           </div>
 
-          {/* Список підпунктів */}
+          {/* List of submenu items */}
           <ul className="flex flex-col gap-3 px-5 py-6">
             {item.menu.items.map((subItem) => (
               <li key={subItem}>

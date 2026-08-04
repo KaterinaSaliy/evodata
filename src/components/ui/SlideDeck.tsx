@@ -12,21 +12,21 @@ import { ArrowLeftIcon, ArrowRightIcon } from "./icons";
 import { cn } from "@/lib/utils";
 
 type SlideDeckProps = {
-  /** Підпис слайдера для допоміжних технологій. */
+  /** Slider label for assistive technology. */
   ariaLabel: string;
-  /** Підписи слайдів — для індикаторів і aria-label кнопок переходу. */
+  /** Slide labels — used by the indicators and the arrow aria-labels. */
   labels: readonly string[];
-  /** Слайди: по одному елементу на підпис. */
+  /** Slides: one element per label. */
   children: ReactNode;
   className?: string;
 };
 
 /**
- * Слайдер повноширинних слайдів на нативному CSS scroll-snap.
+ * Slider of full-width slides built on native CSS scroll-snap.
  *
- * Слайди рендеряться на сервері й лишаються в HTML (важливо для SEO) — клієнтський
- * тут лише шар керування: стрілки, індикатори і відстеження активного слайда.
- * Свайп, тачпад і клавіатурні стрілки працюють нативним скролом.
+ * The slides are server-rendered and stay in the HTML (important for SEO) —
+ * the client layer only handles controls: arrows, indicators and the active slide.
+ * Swipe, trackpad and arrow keys use native scrolling.
  */
 export function SlideDeck({
   ariaLabel,
@@ -38,8 +38,8 @@ export function SlideDeck({
   const [index, setIndex] = useState(0);
   const last = labels.length - 1;
 
-  // Активний слайд рахуємо зі скрол-позиції: слайди однакової ширини, тож
-  // джерело правди одне — і для свайпу, і для кнопок.
+  // The active slide is derived from the scroll position: slides share one
+  // width, so swiping and the buttons read from a single source of truth.
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
@@ -113,8 +113,8 @@ export function SlideDeck({
           </button>
         </div>
 
-        {/* Індикатори: перехід одразу до потрібного напряму.
-            Номер активного слайда показує сам слайд, тож лічильник не дублюємо. */}
+        {/* Indicators: jump straight to a solution area.
+            The slide itself shows its number, so no counter is duplicated here. */}
         <ul className="flex flex-wrap items-center gap-1.5 lg:gap-2">
           {labels.map((label, i) => (
             <li key={label}>

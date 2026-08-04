@@ -7,12 +7,12 @@ const { automation } = home;
 
 /**
  * «We develop and implement custom AI solutions…» — node 9165:260193.
- * Заголовок + стрічка з п'яти напрямів («Главная страница.pdf», п. 5)
- * із перетягуванням мишею.
+ * Heading + strip of five solution areas (client copy deck
+ * "Главная страница.pdf", section 5), dragged with the mouse.
  *
- * Відхилення від макета (на замовлення): у макеті картка горизонтальна —
- * вертикальне фото ліворуч, текст праворуч. Тут фото горизонтальне зверху,
- * текст під ним.
+ * Deviation from the design (requested): the design card is horizontal —
+ * portrait photo on the left, text on the right. Here the photo is landscape
+ * on top with the text below.
  */
 export function AutomationCarousel() {
   return (
@@ -33,8 +33,8 @@ export function AutomationCarousel() {
         {automation.cards.map((card) => (
           <article
             key={card.title}
-            // На вузьких екранах картка навмисно вужча за viewport, щоб було
-            // видно край наступної — інакше стрічка читається як статичний блок.
+            // On narrow screens the card is deliberately narrower than the
+            // viewport so the next one peeks in — otherwise the strip reads as static.
             className="flex w-[min(600px,80vw)] shrink-0 flex-col overflow-hidden rounded-xl border border-gray-200 bg-white"
           >
             <Image

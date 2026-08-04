@@ -1,10 +1,10 @@
 /**
- * Спільний контент (шапка/футер), який повторюється на всіх сторінках.
- * Винесення текстів сюди — частина архітектурної підтримки мультимовності:
- * для нової мови створюється аналогічний файл у `src/content/<locale>/`.
+ * Shared copy (header/footer) repeated across every page.
+ * Keeping it here is part of the architectural multilingual support:
+ * a new language gets its own file under `src/content/<locale>/`.
  */
 export const common = {
-  /** Футер — node 9423:1481. */
+  /** Footer — node 9423:1481. */
   footer: {
     ctaTitle: "Let's build \nthe future together!",
     ctaSubtitle: "Contact us today!",

@@ -1,8 +1,8 @@
 import type { RichBlock } from "@/components/ui/RichBlocks";
 
 /**
- * Контент сторінки About Us.
- * Макет: desktop node 9331:12591, mobile node 9416:94138.
+ * About Us page copy.
+ * Design: desktop node 9331:12591, mobile node 9416:94138.
  */
 export const about = {
   hero: {
@@ -34,7 +34,7 @@ export const about = {
     intro:
       "Our technology stack is designed to support secure, scalable, and enterprise-grade software, data, and AI solutions. We leverage modern DevOps, MLOps, and Data Engineering practices to ensure reliability, operational efficiency, and rapid delivery.",
     columns: ["Category", "Core Technologies", "Purpose"],
-    /** Категорія з кількома технологіями об'єднує рядки (rowspan у макеті). */
+    /** A category with several technologies spans rows (rowspan in the design). */
     rows: [
       {
         category: "Source Control & CI/CD",
@@ -146,13 +146,13 @@ export const about = {
     },
   },
 
-  /** Брендова смуга — node 9337:12684. */
+  /** Brand band — node 9337:12684. */
   band: {
     title:
       "Technology and innovation are the foundation of competitive advantage.",
   },
 
-  /** «Our Most In-Demand AI Solutions» — node 9337:12674 (стрічка з перетягуванням). */
+  /** "Our Most In-Demand AI Solutions" — node 9337:12674 (drag-scrolled strip). */
   inDemand: {
     title: "Our Most In-Demand AI Solutions",
     intro:
@@ -186,7 +186,7 @@ export const about = {
         ],
       },
     ],
-    /** Друге зображення стрічки — картка-підказка «DRAG», як на головній. */
+    /** Second image of the strip — the "DRAG" hint card, as on the home page. */
     dragImage: "/images/about/solution-02.webp",
     outro: {
       title: "Why Organizations Choose These Solutions",
@@ -194,7 +194,7 @@ export const about = {
     },
   },
 
-  /** Розгорнуті напрями — node 9372:1069. */
+  /** Expanded solution areas — node 9372:1069. */
   services: {
     headings: ["AI Agents", "Large Language Models (LLMs)"],
     llm: {
@@ -284,7 +284,7 @@ export const about = {
     trailingHeading: "Machine Learning Development",
   },
 
-  /** «Why choose evodata» — node 9337:12599 (ті самі картки, що й на What We Do). */
+  /** "Why choose evodata" — node 9337:12599 (the same cards as on What We Do). */
   whyChoose: {
     title: "Why choose evodata",
     cards: [

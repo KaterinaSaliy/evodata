@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 const { customSolutions, businessSolutions, roadmaps, whyChoose, band, faq } =
   whatWeDo;
 
-/** Сторінка What We Do — Figma node 9239:708. */
+/** What We Do page — Figma node 9239:708. */
 export default function WhatWeDoPage() {
   return (
     <>
@@ -70,7 +70,7 @@ export default function WhatWeDoPage() {
         </Container>
       </section>
 
-      {/* Ряд логотипів — node 9241:144 */}
+      {/* Logo row — node 9241:144 */}
       <section className="bg-surface pb-16 lg:pb-24">
         <Container>
           <TechLogos />
@@ -87,7 +87,7 @@ export default function WhatWeDoPage() {
         </Container>
       </section>
 
-      {/* evodata in numbers — той самий блок, що й на головній */}
+      {/* evodata in numbers — the same block as on the home page */}
       <Metrics />
 
       {/* AI Implementation Roadmaps — node 9325:1161 */}
@@ -101,7 +101,7 @@ export default function WhatWeDoPage() {
             listClassName="lg:w-[459px]"
             items={roadmaps.tabs.map((tab) => ({
               label: tab.label,
-              // вкладки без контенту в макеті лишаються неактивними
+              // tabs with no copy in the design stay disabled
               panel:
                 "intro" in tab ? (
                   <RoadmapPanel tab={tab as RoadmapTabContent} />
@@ -119,13 +119,13 @@ export default function WhatWeDoPage() {
         </Container>
       </section>
 
-      {/* Цитата — той самий блок, що й на головній */}
+      {/* Quote — the same block as on the home page */}
       <Quote />
 
-      {/* Відео */}
+      {/* Video */}
       <VideoSection />
 
-      {/* Брендова смуга з глобусом — node 9245:24503 */}
+      {/* Brand band with the globe — node 9245:24503 */}
       <BrandBand title={band.title} />
 
       {/* Everything you need to now — node 9241:24297 */}

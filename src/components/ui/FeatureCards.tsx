@@ -10,16 +10,16 @@ export type FeatureCard = {
 type FeatureCardsProps = {
   cards: readonly FeatureCard[];
   /**
-   * `photo` — прямокутне фото 516×292 зі скругленням (node 9320:77996);
-   * `object` — квадратний 3D-об'єкт на прозорому тлі 369×369 (node 9330:4369).
+   * `photo` — rectangular 516×292 photo with rounded corners (node 9320:77996);
+   * `object` — square 369×369 3D object on a transparent background (node 9330:4369).
    */
   variant?: "photo" | "object";
   className?: string;
 };
 
 /**
- * Сітка карток «зображення + заголовок + опис».
- * Використовується на кількох сторінках, тому винесена в спільний компонент.
+ * Grid of "image + heading + description" cards.
+ * Used on several pages, hence a shared component.
  */
 export function FeatureCards({
   cards,

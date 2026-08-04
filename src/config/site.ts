@@ -1,18 +1,18 @@
 /**
- * Глобальна структурна конфігурація сайту: бренд, контакти, навігація, соцмережі.
- * Тексти-підписи навігації тут наведені англійською (поточна локаль); при
- * додаванні мов їх слід перенести у словники контенту (див. `src/config/i18n.ts`).
+ * Global site structure: brand, contacts, navigation, social links.
+ * Navigation labels are in English (the current locale); once more languages
+ * are added they should move into the content dictionaries (see `src/config/i18n.ts`).
  */
 
-/** Випадне підменю пункту головного меню (nodes 9247:100973, 9254:101016). */
+/** Dropdown submenu of a main-menu item (nodes 9247:100973, 9254:101016). */
 export type NavMenu = {
-  /** Заголовок картки ліворуч. */
+  /** Heading of the card on the left. */
   title: string;
   description: string;
   image: string;
   /**
-   * Пункти підменю. Окремих сторінок під них у макеті немає,
-   * тому всі ведуть на батьківську сторінку розділу.
+   * Submenu items. The design has no dedicated pages for them,
+   * so they all point at the parent section page.
    */
   items: readonly string[];
 };
@@ -27,7 +27,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://evodata.com";
 
 export const siteConfig = {
   name: "EvoData",
-  /** Дефолтний <title> та OG-заголовок. */
+  /** Default <title> and OG title. */
   title: "EvoData — From Data Audit to Enterprise AI Solutions",
   description:
     "EvoData designs and delivers custom AI solutions and system engineering — from data audit and machine learning to enterprise-grade AI platforms.",
@@ -44,7 +44,7 @@ export const siteConfig = {
     facebook: "https://facebook.com/",
   },
 
-  /** Головна навігація (шапка). Два пункти мають випадне підменю. */
+  /** Main navigation (header). Two items carry a dropdown submenu. */
   nav: [
     { label: "Home", href: "/" },
     {
@@ -90,9 +90,9 @@ export const siteConfig = {
   ] satisfies NavItem[],
 
   /**
-   * Навігація у футері.
-   * Окремої сторінки Contact у макеті немає — блок «Get in touch» розміщений
-   * на About us, тому посилання веде на його якір.
+   * Footer navigation.
+   * The design has no separate Contact page — the "Get in touch" block lives
+   * on About us, so the link points at its anchor.
    */
   footerNav: [
     { label: "What we do", href: "/what-we-do" },

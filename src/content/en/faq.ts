@@ -1,6 +1,6 @@
 /**
- * Контент сторінки FAQ.
- * Макет: desktop node 9376:6108, mobile node 9416:107603.
+ * FAQ page copy.
+ * Design: desktop node 9376:6108, mobile node 9416:107603.
  */
 export const faq = {
   hero: {
@@ -13,8 +13,8 @@ export const faq = {
   title: "Frequently Asked Questions",
 
   /**
-   * Теми ліворуч. У макеті розкрито контент лише першої —
-   * решта підписів є, але текстів до них немає (див. README).
+   * Topics on the left. The design expands only the first one —
+   * the other labels exist but have no copy yet (see README).
    */
   topics: [
     "Our Team Is Already Overloaded",

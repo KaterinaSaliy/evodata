@@ -5,7 +5,7 @@ import { home } from "@/content/en/home";
 
 /**
  * «Our technology leaders» — node 9165:260126.
- * Макет: білий фон, pt 96 / pb 128, заголовок 72/80, лінія, ряд із 6 логотипів.
+ * Design: white background, pt 96 / pb 128, heading 72/80, rule, row of 6 logos.
  */
 export function TechnologyLeaders() {
   return (

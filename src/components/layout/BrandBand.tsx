@@ -2,13 +2,13 @@ import Image from "next/image";
 import { Container } from "./Container";
 
 type BrandBandProps = {
-  /** Заголовок; `\n` — перенос рядка з макета. */
+  /** Heading; `\n` — line break from the design. */
   title: string;
 };
 
 /**
- * Брендова смуга з крапковим глобусом — Figma node 9245:24503 (1440×693, фон #4264F6).
- * Глобус зведено з двох векторних шарів макета в один растровий ассет із прозорістю.
+ * Brand band with the dotted globe — Figma node 9245:24503 (1440×693, #4264F6).
+ * The globe merges two vector layers of the design into one raster asset with alpha.
  */
 export function BrandBand({ title }: BrandBandProps) {
   return (

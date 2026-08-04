@@ -6,23 +6,23 @@ import { cn } from "@/lib/utils";
 
 export type AccordionItem = {
   title: string;
-  /** Пункти списку всередині розкритого блоку. */
+  /** List items inside the expanded block. */
   bullets?: readonly string[];
-  /** Абзаци тексту всередині розкритого блоку. */
+  /** Paragraphs inside the expanded block. */
   paragraphs?: readonly string[];
 };
 
 type AccordionProps = {
   items: readonly AccordionItem[];
-  /** Індекс початково розкритого пункта (у макеті — перший). */
+  /** Index of the initially expanded item (the first one in the design). */
   defaultOpen?: number;
   className?: string;
 };
 
 /**
- * Акордеон — Figma node 9376:6135.
- * Розкритий пункт має фон Gray/50 і шеврон догори; закриті — лише заголовок.
- * Доступність: заголовок — <button> з aria-expanded, панель прив'язана через aria-controls.
+ * Accordion — Figma node 9376:6135.
+ * The expanded item gets a Gray/50 background and a chevron up; closed ones show only the title.
+ * Accessibility: the title is a <button> with aria-expanded, the panel is tied via aria-controls.
  */
 export function Accordion({
   items,

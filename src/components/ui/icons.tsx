@@ -1,8 +1,8 @@
 import type { SVGProps } from "react";
 
 /**
- * Загальні UI-іконки (не брендові гліфи): бургер, закриття, стрілки, шеврон.
- * Брендові іконки/ілюстрації з дизайну підключаються окремо як експортовані ассети.
+ * Generic UI icons (not brand glyphs): burger, close, arrows, chevron.
+ * Brand icons and illustrations are wired separately as exported assets.
  */
 
 export function MenuIcon(props: SVGProps<SVGSVGElement>) {

@@ -5,8 +5,8 @@ type JsonLdProps<T extends Thing> = {
 };
 
 /**
- * Рендерить структуровані дані Schema.org (JSON-LD) як <script>.
- * Символ `<` екрануємо, щоб уникнути XSS через дані.
+ * Renders Schema.org structured data (JSON-LD) as a <script>.
+ * `<` is escaped to avoid XSS through the data.
  */
 export function JsonLd<T extends Thing>({ data }: JsonLdProps<T>) {
   return (

@@ -1,8 +1,8 @@
 import type { RichBlock } from "@/components/ui/RichBlocks";
 
 /**
- * Контент сторінки Industries.
- * Макет: desktop node 9254:101114, mobile node 9415:93312.
+ * Industries page copy.
+ * Design: desktop node 9254:101114, mobile node 9415:93312.
  */
 export const industries = {
   hero: {
@@ -69,9 +69,9 @@ export const industries = {
 
   /**
    * «From the first idea to scaling…» — node 9329:4329.
-   * У макеті 5 підписів вкладок, але приховані фрейми містять контент із
-   * What We Do (залишки копіювання компонента), тому під'єднано лише ту вкладку,
-   * чий контент справді відповідає підпису. Див. README.
+   * The design has 5 tab labels, but the hidden frames hold copy from
+   * What We Do (left over from copying the component), so only the tab whose
+   * content actually matches its label is wired up. See README.
    */
   stages: {
     title:
@@ -195,7 +195,7 @@ export const industries = {
       "At EvoData, we develop custom AI solutions that integrate directly into existing business workflows, transforming manual processes into intelligent, scalable, and data-driven operations.",
   },
 
-  /** «Why choose evodata» — node 9329:3677 (ті самі 3D-об'єкти, що й на What We Do). */
+  /** "Why choose evodata" — node 9329:3677 (same 3D objects as on What We Do). */
   whyChoose: {
     title: "Why choose evodata",
     cards: [

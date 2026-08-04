@@ -8,8 +8,8 @@ type ContainerProps = {
 };
 
 /**
- * Обмежувач ширини контенту.
- * Бічні поля з макетів: 16px на мобільному (393) і 64px на десктопі (1440).
+ * Content width limiter.
+ * Side padding from the designs: 16px on mobile (393) and 64px on desktop (1440).
  */
 export function Container({
   as: Tag = "div",

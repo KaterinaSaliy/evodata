@@ -2,11 +2,11 @@ import { RichBlocks, type RichBlock } from "@/components/ui/RichBlocks";
 
 export type RoadmapTabContent = {
   label: string;
-  /** Малий заголовок 24/32 (напр. «MVP Development»). */
+  /** Small heading 24/32 (e.g. "MVP Development"). */
   kicker?: string;
-  /** Провідний рядок під заголовком. */
+  /** Lead line under the heading. */
   lead?: string;
-  /** Великий заголовок-антиква 48/60. */
+  /** Large serif heading 48/60. */
   heading?: string;
   intro?: string;
   benefitsTitle?: string;
@@ -17,9 +17,9 @@ export type RoadmapTabContent = {
 };
 
 /**
- * Вміст однієї вкладки «AI Implementation Roadmaps» (фрейми 9325:1489…1492).
- * Адаптер: розкладає структуровану вкладку у блоки й віддає їх спільному
- * рендереру `RichBlocks`, щоб логіка виводу була в одному місці.
+ * Content of a single "AI Implementation Roadmaps" tab (frames 9325:1489…1492).
+ * An adapter: it turns the structured tab into blocks and hands them to the
+ * shared `RichBlocks` renderer, keeping the output logic in one place.
  */
 export function RoadmapPanel({ tab }: { tab: RoadmapTabContent }) {
   const blocks: RichBlock[] = [];

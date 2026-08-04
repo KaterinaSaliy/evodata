@@ -1,6 +1,6 @@
 /**
- * Контент сторінки What We Do.
- * Макет: desktop node 9239:708, mobile node 9413:495.
+ * What We Do page copy.
+ * Design: desktop node 9239:708, mobile node 9413:495.
  */
 export const whatWeDo = {
   hero: {
@@ -27,7 +27,7 @@ export const whatWeDo = {
       "AI Strategy, Consulting & Governance",
       "AI-Powered Applications & User Experiences",
     ],
-    /** Пункти активної теми. */
+    /** Items of the active topic. */
     activeItems: [
       "Development & Integration",
       "Custom Web and Backend Solutions",
@@ -70,9 +70,9 @@ export const whatWeDo = {
 
   /**
    * «AI Implementation Roadmaps» — node 9325:1161.
-   * Вкладки. Контент 4 з 6 узятий із фреймів макета (у Figma вони приховані —
-   * дизайнер показує лише один стан за раз). Для двох останніх вкладок контенту
-   * в макеті немає, тому вони неактивні — див. README.
+   * Tabs. Copy for 4 of 6 comes from the design frames (hidden in Figma —
+   * the designer shows one state at a time). The last two tabs have no copy
+   * in the design, so they stay disabled — see README.
    */
   roadmaps: {
     title: "AI Implementation Roadmaps",
@@ -228,7 +228,7 @@ export const whatWeDo = {
     ],
   },
 
-  /** Брендова смуга з глобусом — node 9245:24503. */
+  /** Brand band with the globe — node 9245:24503. */
   band: {
     title: "Your AI partner — \nanywhere on the globe",
   },

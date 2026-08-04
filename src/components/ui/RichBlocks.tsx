@@ -1,14 +1,14 @@
 /**
- * Універсальний рендерер текстових блоків для вкладок і розгорнутих секцій.
- * Макети (What We Do 9325:1161, Industries 9329:4329) складаються з одного
- * набору типів блоків у різних комбінаціях, тому опис контенту — це масив.
+ * Generic renderer of text blocks for tabs and expanded sections.
+ * The designs (What We Do 9325:1161, Industries 9329:4329) combine the same set
+ * of block types in different orders, so the content is described as an array.
  */
 export type RichBlock =
-  /** Малий заголовок 24/32 */
+  /** Small heading 24/32 */
   | { type: "kicker"; text: string }
-  /** Великий заголовок-антиква 48/60 */
+  /** Large serif heading 48/60 */
   | { type: "heading"; text: string }
-  /** Підзаголовок усередині блоку 24/32 */
+  /** Subheading inside a block 24/32 */
   | { type: "subheading"; text: string }
   | { type: "paragraph"; text: string }
   | { type: "bullets"; items: readonly string[] }

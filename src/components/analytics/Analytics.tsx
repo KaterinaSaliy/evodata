@@ -4,10 +4,10 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
 /**
- * Інтеграції аналітики (Google Analytics 4 + Meta Pixel).
- * Скрипти підключаються лише якщо задані відповідні env-змінні, тож у dev/preview
- * без ключів вони не впливають на продуктивність (Lighthouse).
- * strategy="afterInteractive" — щоб не блокувати рендер.
+ * Analytics integrations (Google Analytics 4 + Meta Pixel).
+ * The scripts load only when the matching env vars are set, so dev/preview
+ * builds without keys stay fast (Lighthouse).
+ * strategy="afterInteractive" keeps them out of the render path.
  */
 export function Analytics() {
   return (

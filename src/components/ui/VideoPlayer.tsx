@@ -10,9 +10,9 @@ type VideoPlayerProps = {
 };
 
 /**
- * Постер із кнопкою відтворення; за кліком підміняється нативним <video>.
- * Саме відео не завантажується, поки користувач не натисне play — це тримає
- * вагу першого екрана низькою (вимога Lighthouse ≥ 90).
+ * Poster with a play button; on click it is replaced by a native <video>.
+ * The video itself is not fetched until the user presses play — that keeps the
+ * first-screen weight low (Lighthouse ≥ 90 requirement).
  */
 export function VideoPlayer({ src, poster, label }: VideoPlayerProps) {
   const [playing, setPlaying] = useState(false);

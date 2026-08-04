@@ -36,7 +36,7 @@ const {
   faq,
 } = industries;
 
-/** Сторінка Industries — Figma node 9254:101114. */
+/** Industries page — Figma node 9254:101114. */
 export default function IndustriesPage() {
   return (
     <>
@@ -144,7 +144,7 @@ export default function IndustriesPage() {
         </Container>
       </section>
 
-      {/* evodata in numbers — той самий блок, що й на головній */}
+      {/* evodata in numbers — the same block as on the home page */}
       <Metrics />
 
       {/* Why choose evodata — node 9329:3677 */}
@@ -155,11 +155,11 @@ export default function IndustriesPage() {
         </Container>
       </section>
 
-      {/* Цитата і відео — спільні блоки */}
+      {/* Quote and video — shared blocks */}
       <Quote />
       <VideoSection />
 
-      {/* AI Implementation Roadmaps — node 9329:4062, ідентичний блоку головної */}
+      {/* AI Implementation Roadmaps — node 9329:4062, same as on the home page */}
       <Roadmaps />
 
       {/* Everything you need to now — node 9329:4121 */}

@@ -2,7 +2,7 @@ import type { FAQPage, Organization, WebSite, WithContext } from "schema-dts";
 import { siteConfig } from "@/config/site";
 import { faq } from "@/content/en/faq";
 
-/** Schema.org Organization для головної сторінки / футера. */
+/** Schema.org Organization for the home page and footer. */
 export function organizationSchema(): WithContext<Organization> {
   return {
     "@context": "https://schema.org",
@@ -24,8 +24,8 @@ export function organizationSchema(): WithContext<Organization> {
 }
 
 /**
- * Schema.org FAQPage — розмітка питань і відповідей для розширених результатів
- * пошуку. Беремо ті пари «питання → відповідь», для яких у макеті є текст.
+ * Schema.org FAQPage — question/answer markup for rich search results.
+ * Only the pairs that have copy in the design are included.
  */
 export function faqSchema(): WithContext<FAQPage> {
   const { activeTopic } = faq;

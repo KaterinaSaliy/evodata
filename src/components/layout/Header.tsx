@@ -11,16 +11,16 @@ import { MenuIcon, CloseIcon, ChevronDownIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
 /**
- * Шапка сайту — Figma node 9137:50051 (висота 80, прозорий фон поверх героя).
- * Активний пункт навігації підкреслено. На <lg — бургер-меню (node 9419:1182).
+ * Site header — Figma node 9137:50051 (height 80, transparent over the hero).
+ * The active item is underlined. Below lg — burger menu (node 9419:1182).
  */
 export function Header() {
   const [open, setOpen] = useState(false);
-  /** href пункта з розгорнутим підменю в мобільному меню. */
+  /** href of the item whose submenu is expanded in the mobile menu. */
   const [expanded, setExpanded] = useState<string | null>(null);
   const pathname = usePathname();
 
-  // Блокуємо скрол сторінки, поки відкрите мобільне меню.
+  // Lock page scrolling while the mobile menu is open.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -33,7 +33,7 @@ export function Header() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-50 text-white">
-      {/* Висота шапки: 72 на мобільному (node 9406:50031), 80 на десктопі */}
+      {/* Header height: 72 on mobile (node 9406:50031), 80 on desktop */}
       <div className="mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between pr-3 pl-4 sm:px-8 lg:h-20 lg:pr-8 lg:pl-[59px]">
         <Link
           href="/"
@@ -43,7 +43,7 @@ export function Header() {
           <Logo className="w-[104px]" />
         </Link>
 
-        {/* Десктопна навігація */}
+        {/* Desktop navigation */}
         <nav className="hidden items-center gap-8 lg:flex">
           {siteConfig.nav.map((item) =>
             item.menu ? (
@@ -72,7 +72,7 @@ export function Header() {
           <LanguageSwitcher />
         </div>
 
-        {/* Бургер (мобільний/планшет) */}
+        {/* Burger (mobile/tablet) */}
         <button
           type="button"
           className="rounded-lg p-2 lg:hidden"
@@ -84,10 +84,10 @@ export function Header() {
         </button>
       </div>
 
-      {/* Мобільне меню (node 9419:1182) */}
+      {/* Mobile menu (node 9419:1182) */}
       {open ? (
         <div className="bg-brand fixed inset-0 z-50 flex flex-col overflow-hidden text-white lg:hidden">
-          {/* Декоративний 3D-об'єкт праворуч, як у макеті */}
+          {/* Decorative 3D object on the right, as in the design */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/hero-glass.webp"
@@ -107,7 +107,7 @@ export function Header() {
             </button>
           </div>
 
-          {/* Мобільна навігація: пункти з підменю розгортаються (node 9413:92974) */}
+          {/* Mobile navigation: items with a submenu expand (node 9413:92974) */}
           <nav className="no-scrollbar relative flex flex-1 flex-col gap-6 overflow-y-auto px-4 pt-6 sm:px-8">
             {siteConfig.nav.map((item) => (
               <div key={item.href} className="flex flex-col gap-3">

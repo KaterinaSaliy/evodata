@@ -3,12 +3,12 @@ import { home } from "@/content/en/home";
 import { VideoPlayer } from "@/components/ui/VideoPlayer";
 
 /**
- * Відеоблок — node 9150:71967 (повна ширина 1440×620, постер + кнопка play).
+ * Video block — node 9150:71967 (full width 1440×620, poster + play button).
  *
- * Поки `home.video.src` порожній (файл відео надає замовник), рендериться лише
- * постер — без інтерактивної кнопки, щоб не було «мертвого» елемента керування.
- * Щойно у конфігу з'явиться шлях до файла, блок стає повноцінним плеєром без
- * будь-яких змін у розмітці.
+ * While `home.video.src` is empty (the client supplies the file), only the
+ * poster renders — without the interactive button, so there is no dead control.
+ * As soon as the config gets a file path, the block becomes a full player with
+ * no markup changes.
  */
 export function VideoSection() {
   const videoSrc: string = home.video.src;

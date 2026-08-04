@@ -4,14 +4,14 @@ import { cn } from "@/lib/utils";
 type ButtonProps = {
   href: string;
   children: React.ReactNode;
-  /** `primary` — біла заливка, `secondary` — контурна на кольоровому тлі. */
+  /** `primary` — white fill, `secondary` — outlined on a coloured background. */
   variant?: "primary" | "secondary";
   className?: string;
 };
 
 /**
- * Кнопка-посилання (node-set 9423:1785).
- * Розміри з макета: padding 18/10, скруглення 8, текст 18/28 semibold.
+ * Link styled as a button (node set 9423:1785).
+ * Sizes from the design: padding 18/10, radius 8, text 18/28 semibold.
  */
 export function Button({
   href,

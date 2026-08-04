@@ -2,8 +2,8 @@ import { Container } from "@/components/layout/Container";
 import { home } from "@/content/en/home";
 
 /**
- * Вступний блок «Tailored AI Solutions & System Engineering» — node 9313:293.
- * Макет: білий фон, py 96, заголовок 72/80 (Serif) шириною 940, текст 20/30 шириною 892.
+ * Intro block "Tailored AI Solutions & System Engineering" — node 9313:293.
+ * Design: white background, py 96, heading 72/80 (Serif) at 940, text 20/30 at 892.
  */
 export function Intro() {
   return (

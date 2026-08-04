@@ -6,15 +6,15 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Analytics } from "@/components/analytics/Analytics";
 
-// Гарнітури з макета Figma. Самохостяться через next/font — жодних зовнішніх
-// запитів у рантаймі (вимога продуктивності/приватності).
+// Typefaces from the Figma design. Self-hosted via next/font — no external
+// requests at runtime (performance and privacy requirement).
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument-sans",
   display: "swap",
 });
 
-// Instrument Serif існує лише у вазі 400; курсив потрібен для логотипа «data».
+// Instrument Serif ships in weight 400 only; the italic is for the "data" wordmark.
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",

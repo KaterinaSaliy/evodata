@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-/** Сторінка FAQ — Figma node 9376:6108. */
+/** FAQ page — Figma node 9376:6108. */
 export default function FaqPage() {
   return (
     <>

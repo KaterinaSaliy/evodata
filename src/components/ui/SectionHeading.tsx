@@ -3,14 +3,14 @@ import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
   children: ReactNode;
-  /** Тег заголовка: h1 у героях, h2 у секціях, h3 усередині блоків. */
+  /** Heading tag: h1 in heroes, h2 in sections, h3 inside blocks. */
   as?: ElementType;
   className?: string;
 };
 
 /**
- * Заголовок секції — Display 2xl із макета (Instrument Serif 72/80, tracking −1.44)
- * зі зменшенням на вужчих екранах. Повторюється у всіх секціях сайту.
+ * Section heading — Display 2xl from the design (Instrument Serif 72/80,
+ * tracking −1.44), scaled down on narrow screens. Repeats across the site.
  */
 export function SectionHeading({
   children,

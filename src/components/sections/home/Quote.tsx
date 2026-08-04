@@ -2,8 +2,8 @@ import { Container } from "@/components/layout/Container";
 import { home } from "@/content/en/home";
 
 /**
- * Цитата «Technology and innovation…» — node 9318:77595.
- * Макет: фон Gray/50, py 96, заголовок 72/90 шириною 940, текст 20/30 шириною 892.
+ * Quote "Technology and innovation…" — node 9318:77595.
+ * Design: Gray/50 background, py 96, heading 72/90 at 940, text 20/30 at 892.
  */
 export function Quote() {
   return (

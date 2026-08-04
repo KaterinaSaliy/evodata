@@ -10,25 +10,25 @@ const social = [
 ];
 
 /**
- * Футер сайту — node 9423:1481 (фон бренду, py 96).
- * Верхній ряд: CTA + контакти + навігація/соцмережі; нижній — великий вордмарк
- * (858×198 у макеті) і копірайт.
+ * Site footer — node 9423:1481 (brand background, py 96).
+ * Top row: CTA + contacts + navigation/social; bottom row: the large wordmark
+ * (858×198 in the design) and the copyright line.
  */
 export function Footer() {
   return (
     <footer className="bg-brand text-white">
       <Container className="flex flex-col gap-14 py-16 lg:gap-[76px] lg:py-24">
-        {/* Верхній ряд */}
-        {/* 1147px — ширина ряду в макеті; max-w, щоб не переповнювати вужчі екрани */}
+        {/* Top row */}
+        {/* 1147px is the row width in the design; max-w keeps narrow screens intact */}
         <div className="flex w-full flex-col gap-12 sm:flex-row sm:justify-between lg:max-w-[1147px]">
           <div className="flex flex-col gap-10 sm:flex-row sm:gap-[109px]">
-            {/* Заклик */}
+            {/* Call to action */}
             <div className="flex flex-col gap-5 text-xl font-medium lg:w-[219px]">
               <p className="whitespace-pre-line">{common.footer.ctaTitle}</p>
               <p>{common.footer.ctaSubtitle}</p>
             </div>
 
-            {/* Контакти */}
+            {/* Contacts */}
             <div className="flex flex-col gap-[11px] lg:w-[331px]">
               <p className="text-base font-semibold text-white/50">
                 {common.footer.talkLabel}
@@ -48,7 +48,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Навігація та соцмережі */}
+          {/* Navigation and social links */}
           <div className="flex flex-col gap-12 lg:w-[100px] lg:gap-[105px]">
             <nav className="flex flex-col gap-[3px] text-lg font-medium">
               {siteConfig.footerNav.map((item) => (
@@ -86,7 +86,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Нижній ряд: вордмарк і копірайт */}
+        {/* Bottom row: wordmark and copyright */}
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <Logo className="w-full max-w-[858px]" />
           <p className="shrink-0 text-base sm:w-[264px] sm:text-right">

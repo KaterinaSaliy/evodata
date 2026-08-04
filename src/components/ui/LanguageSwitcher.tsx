@@ -7,16 +7,16 @@ import { cn } from "@/lib/utils";
 type LanguageSwitcherProps = {
   className?: string;
   /**
-   * `inline` — текстова кнопка в шапці (node I9137:50072).
-   * `panel`  — білий селект у мобільному меню (node 9419:1182).
+   * `inline` — text button in the header (node I9137:50072).
+   * `panel`  — white select in the mobile menu (node 9419:1182).
    */
   variant?: "inline" | "panel";
 };
 
 /**
- * Перемикач мови. Наразі активна одна локаль — ТЗ вимагає лише архітектурну
- * підтримку мультимовності. Коли локалей стане більше, компонент розгортається
- * у випадний список на основі `i18n.locales`.
+ * Language switcher. Only one locale is active — the spec asks for
+ * architectural multilingual support only. Once there are more locales, this
+ * component grows into a dropdown driven by `i18n.locales`.
  */
 export function LanguageSwitcher({
   className,

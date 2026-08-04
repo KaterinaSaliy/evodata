@@ -6,8 +6,8 @@ type TechLogosProps = {
 };
 
 /**
- * Ряд логотипів технологій — node 9165:260126 (головна) та 9241:144 (What We Do,
- * той самий ряд без заголовка). Список ведеться в одному місці, у контенті головної.
+ * Row of technology logos — node 9165:260126 (home) and 9241:144 (What We Do,
+ * the same row without a heading). The list lives in one place, in the home copy.
  */
 export function TechLogos({ className }: TechLogosProps) {
   return (

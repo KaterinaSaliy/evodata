@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-/** Головна сторінка — порядок секцій за макетом Home-Desktop (node 9149:61734). */
+/** Home page — section order follows Home-Desktop (node 9149:61734). */
 export default function HomePage() {
   return (
     <>

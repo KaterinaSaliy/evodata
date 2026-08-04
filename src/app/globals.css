@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 /**
- * Дизайн-токени (Tailwind v4, CSS-first).
- * Значення взяті з Figma (get_variable_defs, файл kVYb1t9QxeNvlhFbSSpfbC).
- * Довідник — docs/figma-map.md.
+ * Design tokens (Tailwind v4, CSS-first).
+ * Values taken from Figma (get_variable_defs, file kVYb1t9QxeNvlhFbSSpfbC).
+ * Reference — docs/figma-map.md.
  */
 @theme {
-  /* Бренд */
+  /* Brand */
   --color-brand: #4264f6;
   --color-brand-hover: #3452e8;
 
-  /* Сіра шкала (Gray/*) */
+  /* Gray scale (Gray/*) */
   --color-gray-900: #101828;
   --color-gray-600: #475467;
   --color-gray-500: #667085;
@@ -19,14 +19,14 @@
   --color-gray-200: #eaecf0;
   --color-gray-50: #f9fafb;
 
-  /* Семантичні псевдоніми */
-  --color-ink: #101828; /* заголовки */
-  --color-body: #475467; /* основний текст */
+  /* Semantic aliases */
+  --color-ink: #101828; /* headings */
+  --color-body: #475467; /* body text */
   --color-surface: #ffffff;
-  --color-surface-2: #f9fafb; /* чергування секцій */
+  --color-surface-2: #f9fafb; /* alternating sections */
 
-  /* Типографічна шкала (Figma → Tailwind).
-     sm 14/20, base 16/24 та lg 18/28 збігаються з дефолтами Tailwind. */
+  /* Type scale (Figma → Tailwind).
+     sm 14/20, base 16/24 and lg 18/28 match the Tailwind defaults. */
   --text-xl: 20px;
   --text-xl--line-height: 30px;
 
@@ -37,13 +37,25 @@
   --text-display-xl--line-height: 72px;
   --text-display-xl--letter-spacing: -2px;
 
-  /* Заголовки секцій головної */
+  /* Home page section headings */
   --text-display-2xl: 72px;
   --text-display-2xl--line-height: 80px;
   --text-display-2xl--letter-spacing: -1.44px;
+
+  /* Tab panel reveal. Restrained — switching should read, not grab attention. */
+  --animate-fade-in: fade-in 380ms ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
-/* Горизонтальні слайдери гортаються, але системний скролбар не показуємо. */
+/* Horizontal sliders scroll, but the system scrollbar stays hidden. */
 @utility no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -52,7 +64,7 @@
   }
 }
 
-/* Шрифти прив'язуємо inline — вони посилаються на runtime-змінні next/font. */
+/* Fonts are bound inline — they reference next/font runtime variables. */
 @theme inline {
   --font-sans:
     var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
