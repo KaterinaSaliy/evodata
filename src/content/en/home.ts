@@ -80,20 +80,39 @@ export const home = {
       accent: "AI solutions",
       after: " to optimize business processes",
     },
-    dragHint: "DRAG",
-    caseStudy: {
-      meta: "Case Study • May 26, 2025",
-      text: "We turned a material science company into an everyday consumer brand, and launched a household friendly product range during a global pandemic.",
-      tags: ["Artificial Intelligence", "Retail"],
-      image: "/images/cards/card-case-study.webp",
-    },
-    feature: {
-      title: "Deep Process Automation",
-      description:
-        "Machine Learning and AI technologies automate repetitive and time-consuming tasks, reducing operational workloads and increasing efficiency. From workforce scheduling to financial reporting, AI enables faster execution, greater consistency, and improved scalability.",
-      image: "/images/cards/card-automation.webp",
-    },
-    dragImage: "/images/cards/card-drag.webp",
+    /** Напрями — «Главная страница.pdf», п. 5. */
+    cards: [
+      {
+        title: "Deep Process Automation",
+        description:
+          "Machine Learning and AI technologies automate repetitive and time-consuming tasks, reducing operational workloads and increasing efficiency. From workforce scheduling to financial reporting, AI enables faster execution, greater consistency, and improved scalability.",
+        image: "/images/cards/deep-process-automation.webp",
+      },
+      {
+        title: "Enhanced Customer Experience",
+        description:
+          "Modern AI-powered assistants and conversational systems provide intelligent, context-aware customer interactions around the clock. Available 24/7 and capable of handling high volumes of requests, they help organizations deliver responsive, high-quality customer service at scale.",
+        image: "/images/cards/enhanced-customer-experience.webp",
+      },
+      {
+        title: "Intelligent Content Generation",
+        description:
+          "Large Language Models (LLMs) and Generative AI accelerate the creation of business content, including marketing materials, internal communications, product descriptions, design concepts, and more. This enables organizations to increase productivity while maintaining quality and consistency.",
+        image: "/images/cards/intelligent-content-generation.webp",
+      },
+      {
+        title: "Predictive Analytics",
+        description:
+          "AI models analyze large volumes of historical and real-time data to identify trends, forecast demand, evaluate risks, and anticipate market changes. These insights help organizations make proactive decisions and adapt their strategies with confidence.",
+        image: "/images/cards/predictive-analytics.webp",
+      },
+      {
+        title: "Data-Driven Decision Making",
+        description:
+          "Machine Learning and advanced analytics consolidate data from multiple sources into a unified view of business performance. This empowers leadership teams with actionable insights, improves visibility across operations, and supports more informed strategic decisions.",
+        image: "/images/cards/data-driven-decision-making.webp",
+      },
+    ],
   },
 
   /** AI Implementation Roadmaps (node 9314:371). */

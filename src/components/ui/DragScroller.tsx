@@ -66,6 +66,10 @@ export function DragScroller({
       onPointerMove={handlePointerMove}
       onPointerUp={stopDragging}
       onPointerCancel={stopDragging}
+      // Нативний drag-and-drop зображень перехоплював вказівник, і замість
+      // стрічки користувач тягнув саму картинку. Подія спливає, тому одного
+      // обробника на контейнері досить для всього вмісту.
+      onDragStart={(event) => event.preventDefault()}
       className={cn(
         "no-scrollbar overflow-x-auto",
         dragging ? "cursor-grabbing select-none" : "cursor-grab",
