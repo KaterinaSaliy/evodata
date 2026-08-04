@@ -9,6 +9,7 @@ import { Quote } from "@/components/sections/home/Quote";
 import { TechnologyLeaders } from "@/components/sections/home/TechnologyLeaders";
 import { VideoSection } from "@/components/sections/home/VideoSection";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { home } from "@/content/en/home";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -30,7 +31,10 @@ export default function HomePage() {
       <Roadmaps />
       <Quote />
       <TechnologyLeaders />
-      <VideoSection />
+
+      {/* Hidden until the client supplies the video: the poster in the design is
+          a stock placeholder. Set `video.src` in the home copy to bring it back. */}
+      {home.video.src ? <VideoSection /> : null}
     </>
   );
 }
