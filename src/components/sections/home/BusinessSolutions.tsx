@@ -1,34 +1,33 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
+import { SlideDeck } from "@/components/ui/SlideDeck";
 import { home } from "@/content/en/home";
 
 /**
  * «AI Solutions for Business Growth and Operational Excellence» —
- * заголовок (node 9420:1366) + горизонтальний слайдер із 6 напрямів
- * (nodes 9420:1382, 1398, 1412, 1426, 1437, 1452).
+ * заголовок (node 9420:1366) + слайдер із 6 напрямів
+ * (nodes 9420:1382, 1398, 1412, 1426, 1437, 1452 — у макеті це стани одного блоку).
  *
- * Слайдер реалізовано на нативному CSS scroll-snap: працює з тачпадом, свайпом
- * і клавіатурою, не тягне JS-бібліотек і не блокує рендер (важливо для Lighthouse).
+ * У макеті перемикання підказане лише написом «(SCROLL)»; замінено на явні
+ * стрілки й індикатори, інакше 5 із 6 напрямів лишаються непоміченими.
  */
 export function BusinessSolutions() {
   return (
-    <section className="bg-surface-2 pt-16 lg:pt-24">
+    <section className="bg-surface-2 pt-16 pb-16 lg:pt-24 lg:pb-24">
       <Container>
         <h2 className="text-ink lg:text-display-2xl max-w-[940px] font-serif text-[36px] leading-[1.1] tracking-[-0.02em] sm:text-[52px]">
           {home.solutions.title}
         </h2>
       </Container>
 
-      <div
-        className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto"
-        tabIndex={0}
-        role="region"
-        aria-label={home.solutions.title}
+      <SlideDeck
+        ariaLabel={home.solutions.title}
+        labels={home.solutions.slides.map((slide) => slide.title)}
       >
         {home.solutions.slides.map((slide) => (
           <article
             key={slide.number}
-            className="w-full shrink-0 snap-start py-16 lg:py-24"
+            className="w-full shrink-0 snap-start pt-16 pb-10 lg:pt-24 lg:pb-16"
             aria-label={`${slide.number} — ${slide.title}`}
           >
             <Container>
@@ -54,12 +53,6 @@ export function BusinessSolutions() {
                   <p className="text-body text-lg font-medium whitespace-pre-line lg:text-xl">
                     {slide.description}
                   </p>
-                  <p
-                    aria-hidden="true"
-                    className="mt-8 text-lg font-medium text-black lg:mt-auto"
-                  >
-                    {home.solutions.scrollHint}
-                  </p>
                 </div>
 
                 <Image
@@ -74,7 +67,7 @@ export function BusinessSolutions() {
             </Container>
           </article>
         ))}
-      </div>
+      </SlideDeck>
     </section>
   );
 }

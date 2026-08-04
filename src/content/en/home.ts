@@ -27,7 +27,6 @@ export const home = {
   /** Заголовок + слайдер напрямів (nodes 9420:1366 та 9420:1382…1452). */
   solutions: {
     title: "AI Solutions for Business Growth and Operational Excellence",
-    scrollHint: "(SCROLL)",
     slides: [
       {
         number: "01",
