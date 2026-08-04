@@ -53,6 +53,19 @@
       opacity: 1;
     }
   }
+
+  /* Technology logo marquee. Slow on purpose — the row should read as it moves.
+     The track holds two identical copies, so -50% lands on a seamless loop. */
+  --animate-marquee: marquee 70s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 /* Horizontal sliders scroll, but the system scrollbar stays hidden. */

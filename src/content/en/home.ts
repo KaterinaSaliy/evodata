@@ -347,7 +347,11 @@ export const home = {
     body: "Organizations that successfully leverage advanced technologies are better positioned to improve efficiency, accelerate growth, and outperform their competitors.",
   },
 
-  /** Our technology leaders (node 9165:260126). */
+  /**
+   * Our technology leaders (node 9165:260126).
+   * The design row holds 6 logos; the rest sit on the canvas next to the frame
+   * (nodes 9239:423…9239:535). All of them run in the marquee.
+   */
   techLeaders: {
     title: "Our technology leaders",
     logos: [
@@ -376,6 +380,72 @@ export const home = {
         src: "/images/tech/terraform.svg",
         width: 206,
         height: 49,
+      },
+      {
+        name: "PostgreSQL",
+        src: "/images/tech/postgresql.svg",
+        width: 274,
+        height: 59,
+      },
+      {
+        name: "Docker",
+        src: "/images/tech/docker.svg",
+        width: 190,
+        height: 44,
+      },
+      {
+        name: "Kubernetes",
+        src: "/images/tech/kubernetes.svg",
+        width: 255,
+        height: 43,
+      },
+      {
+        name: "Hugging Face",
+        src: "/images/tech/huggingface.svg",
+        width: 297,
+        height: 48,
+      },
+      {
+        name: "Apache Spark",
+        src: "/images/tech/apache-spark.svg",
+        width: 143,
+        height: 74,
+      },
+      {
+        name: "PyTorch",
+        src: "/images/tech/pytorch.svg",
+        width: 189,
+        height: 47,
+      },
+      {
+        name: "Microsoft Azure",
+        src: "/images/tech/azure.svg",
+        width: 171,
+        height: 50,
+      },
+      {
+        name: "Google BigQuery",
+        src: "/images/tech/bigquery.svg",
+        width: 179,
+        height: 61,
+      },
+      {
+        name: "OpenAI",
+        src: "/images/tech/openai.svg",
+        width: 169,
+        height: 47,
+      },
+      {
+        name: "Google Cloud",
+        src: "/images/tech/gcp.svg",
+        width: 260,
+        height: 41,
+      },
+      {
+        name: "Amazon Web Services",
+        src: "/images/tech/aws.svg",
+        width: 95,
+        height: 57,
       },
     ],
   },

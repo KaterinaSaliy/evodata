@@ -12,7 +12,7 @@ export const about = {
       "Every enterprise wants its operations to run faster. You want greater results with fewer resources.",
   },
 
-  /** «Get in touch» — node 9373:12959. */
+  /** "Get in touch" — node 9373:12959. */
   contact: {
     title: "Get in touch",
     intro:
@@ -28,7 +28,7 @@ export const about = {
     ],
   },
 
-  /** «Technologies & Delivery Processes» — node 9337:12665. */
+  /** "Technologies & Delivery Processes" — node 9337:12665. */
   technologies: {
     title: "Technologies & Delivery Processes",
     intro:

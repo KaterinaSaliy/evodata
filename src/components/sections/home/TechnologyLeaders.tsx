@@ -4,8 +4,8 @@ import { TechLogos } from "@/components/ui/TechLogos";
 import { home } from "@/content/en/home";
 
 /**
- * «Our technology leaders» — node 9165:260126.
- * Design: white background, pt 96 / pb 128, heading 72/80, rule, row of 6 logos.
+ * "Our technology leaders" — node 9165:260126.
+ * Design: white background, pt 96 / pb 128, heading 72/80, rule, row of logos.
  */
 export function TechnologyLeaders() {
   return (

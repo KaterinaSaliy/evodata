@@ -12,7 +12,7 @@ export const industries = {
       "Every enterprise wants its operations to run faster. You want greater results with fewer resources.",
   },
 
-  /** «Our custom solutions» — node 9325:3623. */
+  /** "Our custom solutions" — node 9325:3623. */
   customSolutions: {
     title: "Our custom solutions",
     topics: [
@@ -34,7 +34,7 @@ export const industries = {
     ],
   },
 
-  /** «The Business Value of AI Transformation» — node 9329:4246. */
+  /** "The Business Value of AI Transformation" — node 9329:4246. */
   businessValue: {
     title: "The Business Value of AI Transformation",
     intro:
@@ -68,7 +68,7 @@ export const industries = {
   },
 
   /**
-   * «From the first idea to scaling…» — node 9329:4329.
+   * "From the first idea to scaling…" — node 9329:4329.
    * The design has 5 tab labels, but the hidden frames hold copy from
    * What We Do (left over from copying the component), so only the tab whose
    * content actually matches its label is wired up. See README.
@@ -158,7 +158,7 @@ export const industries = {
     ],
   },
 
-  /** «AI Is Not a Replacement for People» — node 9403:355. */
+  /** "AI Is Not a Replacement for People" — node 9403:355. */
   forceMultiplier: {
     title: "AI Is Not a Replacement for People — It's a Force Multiplier",
     intro:
@@ -232,7 +232,7 @@ export const industries = {
     ],
   },
 
-  /** «Everything you need to now» — node 9329:4121. */
+  /** "Everything you need to now" — node 9329:4121. */
   faq: {
     title: "Everything you need to now",
     items: [

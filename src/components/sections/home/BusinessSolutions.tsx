@@ -4,7 +4,7 @@ import { SlideDeck } from "@/components/ui/SlideDeck";
 import { home } from "@/content/en/home";
 
 /**
- * «AI Solutions for Business Growth and Operational Excellence» —
+ * "AI Solutions for Business Growth and Operational Excellence" —
  * heading (node 9420:1366) + slider of 6 solution areas
  * (nodes 9420:1382, 1398, 1412, 1426, 1437, 1452 — states of one block in the design).
  *

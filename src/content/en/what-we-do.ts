@@ -14,7 +14,7 @@ export const whatWeDo = {
     ],
   },
 
-  /** «Our custom solutions» — node 9318:77618. */
+  /** "Our custom solutions" — node 9318:77618. */
   customSolutions: {
     title: "Our custom solutions",
     topics: [
@@ -37,7 +37,7 @@ export const whatWeDo = {
     ],
   },
 
-  /** «Custom AI solutions for business» — node 9320:77996. */
+  /** "Custom AI solutions for business" — node 9320:77996. */
   businessSolutions: {
     title: "Custom AI solutions for business",
     cards: [
@@ -69,7 +69,7 @@ export const whatWeDo = {
   },
 
   /**
-   * «AI Implementation Roadmaps» — node 9325:1161.
+   * "AI Implementation Roadmaps" — node 9325:1161.
    * Tabs. Copy for 4 of 6 comes from the design frames (hidden in Figma —
    * the designer shows one state at a time). The last two tabs have no copy
    * in the design, so they stay disabled — see README.
@@ -191,7 +191,7 @@ export const whatWeDo = {
     ],
   },
 
-  /** «Why choose evodata» — node 9330:4369. */
+  /** "Why choose evodata" — node 9330:4369. */
   whyChoose: {
     title: "Why choose evodata",
     cards: [
@@ -233,7 +233,7 @@ export const whatWeDo = {
     title: "Your AI partner — \nanywhere on the globe",
   },
 
-  /** «Everything you need to now» — node 9241:24297. */
+  /** "Everything you need to now" — node 9241:24297. */
   faq: {
     title: "Everything you need to now",
     items: [

@@ -6,7 +6,7 @@ import { home } from "@/content/en/home";
 const { automation } = home;
 
 /**
- * «We develop and implement custom AI solutions…» — node 9165:260193.
+ * "We develop and implement custom AI solutions…" — node 9165:260193.
  * Heading + strip of five solution areas (client copy deck
  * "Главная страница.pdf", section 5), dragged with the mouse.
  *
