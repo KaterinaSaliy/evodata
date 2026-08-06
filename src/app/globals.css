@@ -68,6 +68,31 @@
   }
 }
 
+/**
+ * Side padding for full-bleed card strips.
+ *
+ * From `md` up it repeats what `Container` reserves, so the first card starts
+ * exactly under the heading while the strip still runs to the window edge.
+ * Below that the card is viewport-bound (`--card` capped at 72vw) and the
+ * padding centres it, leaving its neighbours peeking in on both sides.
+ *
+ * `scroll-padding` has to match: with mandatory snapping the browser would
+ * otherwise snap the first card flush to the edge and swallow the padding.
+ */
+@utility strip-gutter {
+  --gutter: calc((100% - min(var(--card), 72vw)) / 2);
+  padding-inline: var(--gutter);
+  scroll-padding-inline: var(--gutter);
+
+  @media (width >= 48rem) {
+    --gutter: 2rem;
+  }
+
+  @media (width >= 64rem) {
+    --gutter: max(4rem, calc((100% - 1440px) / 2 + 4rem));
+  }
+}
+
 /* Horizontal sliders scroll, but the system scrollbar stays hidden. */
 @utility no-scrollbar {
   scrollbar-width: none;
