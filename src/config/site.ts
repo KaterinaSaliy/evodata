@@ -33,11 +33,10 @@ export const siteConfig = {
     "EvoData designs and delivers custom AI solutions and system engineering — from data audit and machine learning to enterprise-grade AI platforms.",
   url: siteUrl,
 
-  contacts: {
-    email: "hello@evodata.com",
-    phone: "(123) 098-654",
-    address: "Warschauer Platz 11-13, 10245 Berlin",
-  },
+  // Phone and e-mail are NOT here on purpose — they live in
+  // `src/config/contacts.ts`, which must never reach a client component.
+  // This file does (the header is interactive), so anything in it ends up in
+  // the JS bundle where a harvester can read it.
 
   social: {
     instagram: "https://instagram.com/",

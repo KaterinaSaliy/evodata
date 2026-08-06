@@ -2,7 +2,14 @@ import type { FAQPage, Organization, WebSite, WithContext } from "schema-dts";
 import { siteConfig } from "@/config/site";
 import { faq } from "@/content/en/faq";
 
-/** Schema.org Organization for the home page and footer. */
+/**
+ * Schema.org Organization for the home page and footer.
+ *
+ * `email` and `telephone` are deliberately absent: JSON-LD is the easiest thing
+ * on a page for a harvester to read, so publishing them there would defeat the
+ * obfuscation in `ContactLink`. Name, URL, address and profiles stay — they are
+ * what search engines actually use here.
+ */
 export function organizationSchema(): WithContext<Organization> {
   return {
     "@context": "https://schema.org",
@@ -10,8 +17,6 @@ export function organizationSchema(): WithContext<Organization> {
     name: siteConfig.name,
     url: siteConfig.url,
     description: siteConfig.description,
-    email: siteConfig.contacts.email,
-    telephone: siteConfig.contacts.phone,
     address: {
       "@type": "PostalAddress",
       streetAddress: "Warschauer Platz 11-13",

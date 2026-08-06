@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { contacts, scramble } from "@/config/contacts";
+import { ContactLink } from "@/components/ui/ContactLink";
 import { common } from "@/content/en/common";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
@@ -33,18 +35,18 @@ export function Footer() {
               <p className="text-base font-semibold text-white/50">
                 {common.footer.talkLabel}
               </p>
-              <a
-                href={`tel:${siteConfig.contacts.phone.replace(/[^\d+]/g, "")}`}
-                className="text-lg font-medium transition-opacity hover:opacity-80"
-              >
-                {siteConfig.contacts.phone}
-              </a>
-              <a
-                href={`mailto:${siteConfig.contacts.email}`}
+              <ContactLink
+                scheme="tel"
+                scrambled={scramble(contacts.phone)}
+                scrambledHref={scramble(contacts.phoneHref)}
+                className="w-fit text-lg font-medium transition-opacity hover:opacity-80"
+              />
+              <ContactLink
+                scheme="mailto"
+                scrambled={scramble(contacts.email)}
+                scrambledHref={scramble(contacts.email)}
                 className="w-fit border-b border-white/70 pb-[13px] text-[28px] leading-[30px] font-medium transition-opacity hover:opacity-80 lg:text-[36px]"
-              >
-                {siteConfig.contacts.email}
-              </a>
+              />
             </div>
           </div>
 

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { InnerHero } from "@/components/layout/InnerHero";
 import { BrandBand } from "@/components/layout/BrandBand";
+import { ContactLink } from "@/components/ui/ContactLink";
 import { DragScroller } from "@/components/ui/DragScroller";
 import { FeatureCards } from "@/components/ui/FeatureCards";
 import { RichBlocks, type RichBlock } from "@/components/ui/RichBlocks";
@@ -10,6 +11,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Quote } from "@/components/sections/home/Quote";
 import { VideoSection } from "@/components/sections/home/VideoSection";
 import { about } from "@/content/en/about";
+import { contacts, scramble } from "@/config/contacts";
 
 export const metadata: Metadata = {
   title: "About us — software engineering services",
@@ -41,27 +43,42 @@ export default function AboutPage() {
           </p>
 
           <dl className="grid gap-8 sm:grid-cols-3">
-            {contact.items.map((item) => (
-              <div key={item.label} className="flex flex-col gap-2">
-                <dt className="text-ink text-lg font-semibold lg:text-xl">
-                  {item.label}
-                </dt>
-                <dd className="text-ink text-[28px] leading-tight font-medium lg:text-[36px]">
-                  {"href" in item && item.href ? (
-                    <a
-                      href={item.href}
-                      className="underline-offset-4 transition-opacity hover:underline hover:opacity-70"
-                    >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <span className="text-body text-lg whitespace-pre-line lg:text-xl">
-                      {item.value}
-                    </span>
-                  )}
-                </dd>
-              </div>
-            ))}
+            <div className="flex flex-col gap-2">
+              <dt className="text-ink text-lg font-semibold lg:text-xl">
+                {contact.phoneLabel}
+              </dt>
+              <dd className="text-ink text-[28px] leading-tight font-medium lg:text-[36px]">
+                <ContactLink
+                  scheme="tel"
+                  scrambled={scramble(contacts.phone)}
+                  scrambledHref={scramble(contacts.phoneHref)}
+                  className="inline-block underline-offset-4 transition-opacity hover:underline hover:opacity-70"
+                />
+              </dd>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <dt className="text-ink text-lg font-semibold lg:text-xl">
+                {contact.mailLabel}
+              </dt>
+              <dd className="text-ink text-[28px] leading-tight font-medium lg:text-[36px]">
+                <ContactLink
+                  scheme="mailto"
+                  scrambled={scramble(contacts.email)}
+                  scrambledHref={scramble(contacts.email)}
+                  className="inline-block underline-offset-4 transition-opacity hover:underline hover:opacity-70"
+                />
+              </dd>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <dt className="text-ink text-lg font-semibold lg:text-xl">
+                {contact.addressLabel}
+              </dt>
+              <dd className="text-body text-lg whitespace-pre-line lg:text-xl">
+                {contact.address}
+              </dd>
+            </div>
           </dl>
         </Container>
       </section>

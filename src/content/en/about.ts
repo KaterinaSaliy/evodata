@@ -17,15 +17,15 @@ export const about = {
     title: "Get in touch",
     intro:
       "Transformational work comes from great collaboration. Whether you're at the early stage with a new idea or deep in the process, get in touch with our business team to see if we are the right match.",
-    items: [
-      { label: "Phone", value: "(123) 098-654", href: "tel:+123098654" },
-      {
-        label: "Mail",
-        value: "hello@evodata.com",
-        href: "mailto:hello@evodata.com",
-      },
-      { label: "Address", value: "Warschauer Platz 11-13\n10245 Berlin" },
-    ],
+    /**
+     * Labels only: the phone and e-mail themselves live in
+     * `src/config/contacts.ts` and reach the page through `ContactLink`,
+     * which keeps them out of the served HTML — see README.
+     */
+    phoneLabel: "Phone",
+    mailLabel: "Mail",
+    addressLabel: "Address",
+    address: "Warschauer Platz 11-13\n10245 Berlin",
   },
 
   /** "Technologies & Delivery Processes" — node 9337:12665. */
