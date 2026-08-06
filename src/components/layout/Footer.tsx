@@ -88,12 +88,24 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom row: wordmark and copyright */}
+        {/* Bottom row: wordmark, legal links and copyright */}
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <Logo className="w-full max-w-[858px]" />
-          <p className="shrink-0 text-base sm:w-[264px] sm:text-right">
-            {common.footer.rights}
-          </p>
+
+          <div className="flex shrink-0 flex-col gap-2 text-base sm:w-[264px] sm:items-end">
+            <nav className="flex flex-wrap gap-x-5 gap-y-1 sm:justify-end">
+              {siteConfig.legalNav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="transition-opacity hover:opacity-80"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <p className="sm:text-right">{common.footer.rights}</p>
+          </div>
         </div>
       </Container>
     </footer>

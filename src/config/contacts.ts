@@ -12,6 +12,8 @@
  */
 export const contacts = {
   email: "hello@evodata.com",
+  /** Data controller, named in the Privacy Policy. */
+  dataProtectionEmail: "dh@evo-data.com",
   phone: "(123) 098-654",
   /** Dial string for the `tel:` link — digits and a leading plus only. */
   phoneHref: "+123098654",

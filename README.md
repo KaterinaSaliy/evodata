@@ -137,6 +137,13 @@ src/
 | What we do | `/what-we-do` | готова (списки рішень, вкладки Roadmaps і слайдер інтерактивні) |
 | Industries | `/industries` | готова |
 | About us | `/about` | готова |
+| Privacy Policy | `/privacy-policy` | готова (макета немає — верстка за стилем сайту) |
+| Terms of Service | `/terms-of-service` | готова (макета немає) |
+
+Юридичні сторінки зібрані з документів замовника («PRIVACY POLICY.pdf»,
+«Website Terms of Service…pdf»): тексти в `src/content/en/legal.ts`, спільний
+макет — `src/components/sections/LegalDocument.tsx` (синя шапка, зміст ліворуч,
+документ праворуч). Посилання на них — у нижньому рядку футера.
 
 Окремої сторінки Contact у макеті немає — блок «Get in touch» розміщений на
 About us, тому пункт «Contact» у футері веде на якір `/about#contact`.

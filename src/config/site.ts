@@ -100,6 +100,16 @@ export const siteConfig = {
     { label: "Contact", href: "/about#contact" },
     { label: "FAQ", href: "/faq" },
   ] satisfies NavItem[],
+
+  /**
+   * Legal pages. They sit in the bottom row of the footer next to the
+   * copyright — the usual place, and the GDPR expects the privacy policy to be
+   * reachable from every page.
+   */
+  legalNav: [
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
+  ] satisfies NavItem[],
 } as const;
 
 export type SiteConfig = typeof siteConfig;

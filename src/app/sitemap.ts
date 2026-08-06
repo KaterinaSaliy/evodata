@@ -10,10 +10,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ["", "/what-we-do", "/industries", "/about", "/faq"];
   const lastModified = new Date();
 
-  return routes.map((path) => ({
-    url: `${siteConfig.url}${path}`,
-    lastModified,
-    changeFrequency: "monthly",
-    priority: path === "" ? 1 : 0.8,
-  }));
+  return [
+    ...routes.map((path) => ({
+      url: `${siteConfig.url}${path}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: path === "" ? 1 : 0.8,
+    })),
+    // Legal pages: indexable, but they rarely change and rank for nothing.
+    ...siteConfig.legalNav.map((item) => ({
+      url: `${siteConfig.url}${item.href}`,
+      lastModified,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
+  ];
 }
