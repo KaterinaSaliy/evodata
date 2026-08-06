@@ -10,6 +10,8 @@ export type RichBlock =
   | { type: "heading"; text: string }
   /** Subheading inside a block 24/32 */
   | { type: "subheading"; text: string }
+  /** Semibold line under a kicker 20/30 */
+  | { type: "lead"; text: string }
   | { type: "paragraph"; text: string }
   | { type: "bullets"; items: readonly string[] }
   | { type: "definitions"; items: readonly { title: string; text: string }[] };
@@ -47,6 +49,16 @@ export function RichBlocks({ blocks }: { blocks: readonly RichBlock[] }) {
               >
                 {block.text}
               </h4>
+            );
+
+          case "lead":
+            return (
+              <p
+                key={index}
+                className="text-ink text-lg font-semibold lg:text-xl"
+              >
+                {block.text}
+              </p>
             );
 
           case "paragraph":

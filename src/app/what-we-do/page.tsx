@@ -3,11 +3,12 @@ import { Container } from "@/components/layout/Container";
 import { InnerHero } from "@/components/layout/InnerHero";
 import { BrandBand } from "@/components/layout/BrandBand";
 import { Accordion } from "@/components/ui/Accordion";
+import { CardSlider } from "@/components/ui/CardSlider";
 import { FeatureCards } from "@/components/ui/FeatureCards";
+import { RichBlocks } from "@/components/ui/RichBlocks";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Tabs } from "@/components/ui/Tabs";
 import { TechLogos } from "@/components/ui/TechLogos";
-import { TopicList } from "@/components/ui/TopicList";
 import {
   RoadmapPanel,
   type RoadmapTabContent,
@@ -46,27 +47,17 @@ export default function WhatWeDoPage() {
             {customSolutions.title}
           </SectionHeading>
 
-          <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
-            <TopicList
-              items={customSolutions.topics}
-              className="shrink-0 lg:w-[459px]"
-            />
-
-            <ul className="flex min-w-0 flex-1 flex-col gap-[14px]">
-              {customSolutions.activeItems.map((item) => (
-                <li key={item} className="flex items-start gap-4">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/icon-bullet.svg"
-                    alt=""
-                    aria-hidden="true"
-                    className="mt-2 h-[18px] w-[6px] shrink-0"
-                  />
-                  <span className="text-body text-lg lg:text-xl">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Tabs
+            listClassName="lg:w-[459px]"
+            items={customSolutions.topics.map((topic) => ({
+              label: topic.label,
+              panel: (
+                <RichBlocks
+                  blocks={[{ type: "bullets", items: topic.items }]}
+                />
+              ),
+            }))}
+          />
         </Container>
       </section>
 
@@ -79,12 +70,18 @@ export default function WhatWeDoPage() {
 
       {/* Custom AI solutions for business — node 9320:77996 */}
       <section className="bg-surface-2 py-16 lg:py-24">
-        <Container className="flex flex-col gap-10 lg:gap-16">
+        <Container>
           <SectionHeading className="max-w-[940px]">
             {businessSolutions.title}
           </SectionHeading>
-          <FeatureCards cards={businessSolutions.cards} variant="photo" />
         </Container>
+
+        <CardSlider
+          cards={businessSolutions.cards}
+          ariaLabel={businessSolutions.title}
+          controls
+          className="mt-10 lg:mt-16"
+        />
       </section>
 
       {/* evodata in numbers — the same block as on the home page */}
@@ -97,15 +94,25 @@ export default function WhatWeDoPage() {
             {roadmaps.title}
           </SectionHeading>
 
+          {/* Intro above the tabs — frame 9330:5354 */}
+          <div className="max-w-[892px]">
+            <RichBlocks
+              blocks={[
+                { type: "kicker", text: roadmaps.intro.kicker },
+                { type: "lead", text: roadmaps.intro.lead },
+                ...roadmaps.intro.paragraphs.map(
+                  (text) => ({ type: "paragraph", text }) as const,
+                ),
+              ]}
+            />
+          </div>
+
           <Tabs
-            listClassName="lg:w-[459px]"
+            variant="inline"
+            label={roadmaps.title}
             items={roadmaps.tabs.map((tab) => ({
               label: tab.label,
-              // tabs with no copy in the design stay disabled
-              panel:
-                "intro" in tab ? (
-                  <RoadmapPanel tab={tab as RoadmapTabContent} />
-                ) : undefined,
+              panel: <RoadmapPanel tab={tab as RoadmapTabContent} />,
             }))}
           />
         </Container>
@@ -128,7 +135,7 @@ export default function WhatWeDoPage() {
       {/* Brand band with the globe — node 9245:24503 */}
       <BrandBand title={band.title} />
 
-      {/* Everything you need to now — node 9241:24297 */}
+      {/* Everything you need to know — node 9241:24297 */}
       <section className="bg-surface py-16 lg:py-24">
         <Container className="flex flex-col gap-10 lg:gap-16">
           <SectionHeading className="max-w-[940px]">{faq.title}</SectionHeading>

@@ -232,9 +232,9 @@ export const industries = {
     ],
   },
 
-  /** "Everything you need to now" — node 9329:4121. */
+  /** "Everything you need to know" — node 9329:4121. */
   faq: {
-    title: "Everything you need to now",
+    title: "Everything you need to know",
     items: [
       {
         title: "What Types of AI Solutions Do You Develop?",

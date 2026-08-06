@@ -162,7 +162,7 @@ export default function IndustriesPage() {
       {/* AI Implementation Roadmaps — node 9329:4062, same as on the home page */}
       <Roadmaps />
 
-      {/* Everything you need to now — node 9329:4121 */}
+      {/* Everything you need to know — node 9329:4121 */}
       <section className="bg-surface py-16 lg:py-24">
         <Container className="flex flex-col gap-10 lg:gap-16">
           <SectionHeading className="max-w-[940px]">{faq.title}</SectionHeading>

@@ -8,11 +8,14 @@ export type RoadmapTabContent = {
   lead?: string;
   /** Large serif heading 48/60. */
   heading?: string;
-  intro?: string;
+  /** One or more paragraphs under the heading. */
+  intro?: string | readonly string[];
   benefitsTitle?: string;
   benefits?: readonly { title: string; text: string }[];
   outcomesTitle?: string;
   outcomes?: readonly string[];
+  /** Heading above the closing paragraph, where the copy deck has one. */
+  closingTitle?: string;
   closing?: string;
 };
 
@@ -25,9 +28,13 @@ export function RoadmapPanel({ tab }: { tab: RoadmapTabContent }) {
   const blocks: RichBlock[] = [];
 
   if (tab.kicker) blocks.push({ type: "kicker", text: tab.kicker });
-  if (tab.lead) blocks.push({ type: "paragraph", text: tab.lead });
+  if (tab.lead) blocks.push({ type: "lead", text: tab.lead });
   if (tab.heading) blocks.push({ type: "heading", text: tab.heading });
-  if (tab.intro) blocks.push({ type: "paragraph", text: tab.intro });
+  for (const text of typeof tab.intro === "string"
+    ? [tab.intro]
+    : (tab.intro ?? [])) {
+    blocks.push({ type: "paragraph", text });
+  }
   if (tab.benefitsTitle)
     blocks.push({ type: "subheading", text: tab.benefitsTitle });
   if (tab.benefits?.length)
@@ -36,6 +43,8 @@ export function RoadmapPanel({ tab }: { tab: RoadmapTabContent }) {
     blocks.push({ type: "subheading", text: tab.outcomesTitle });
   if (tab.outcomes?.length)
     blocks.push({ type: "bullets", items: tab.outcomes });
+  if (tab.closingTitle)
+    blocks.push({ type: "subheading", text: tab.closingTitle });
   if (tab.closing) blocks.push({ type: "paragraph", text: tab.closing });
 
   return <RichBlocks blocks={blocks} />;

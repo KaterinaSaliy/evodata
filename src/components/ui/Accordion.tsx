@@ -4,12 +4,27 @@ import { useId, useState } from "react";
 import { ChevronDownIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
+/**
+ * A titled part of a long answer. The client copy deck groups the longer FAQ
+ * answers under headings ("Our Integration Approach", "Business Value", …),
+ * each holding any mix of paragraphs, named items and bullets.
+ */
+export type AccordionSection = {
+  heading?: string;
+  paragraphs?: readonly string[];
+  /** Named items: a semibold title with a paragraph under it. */
+  definitions?: readonly { title: string; text: string }[];
+  bullets?: readonly string[];
+};
+
 export type AccordionItem = {
   title: string;
   /** List items inside the expanded block. */
   bullets?: readonly string[];
   /** Paragraphs inside the expanded block. */
   paragraphs?: readonly string[];
+  /** Sections rendered after the paragraphs and bullets above. */
+  sections?: readonly AccordionSection[];
 };
 
 type AccordionProps = {
@@ -18,6 +33,25 @@ type AccordionProps = {
   defaultOpen?: number;
   className?: string;
 };
+
+function Bullets({ items }: { items: readonly string[] }) {
+  return (
+    <ul className="flex flex-col gap-[14px] pl-6">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/icon-dot.svg"
+            alt=""
+            aria-hidden="true"
+            className="mt-2 size-[6px] shrink-0"
+          />
+          <span className="text-body text-base">{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 /**
  * Accordion — Figma node 9376:6135.
@@ -81,21 +115,51 @@ export function Accordion({
                 </p>
               ))}
 
-              {item.bullets?.length ? (
-                <ul className="flex flex-col gap-[14px] pl-6">
-                  {item.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-start gap-4">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="/images/icon-dot.svg"
-                        alt=""
-                        aria-hidden="true"
-                        className="mt-2 size-[6px] shrink-0"
-                      />
-                      <span className="text-body text-base">{bullet}</span>
-                    </li>
+              {item.bullets?.length ? <Bullets items={item.bullets} /> : null}
+
+              {item.sections?.length ? (
+                <div className="flex flex-col gap-6">
+                  {item.sections.map((section, sectionIndex) => (
+                    <div
+                      key={section.heading ?? sectionIndex}
+                      className="flex flex-col gap-3"
+                    >
+                      {section.heading ? (
+                        <h4 className="text-ink text-lg font-semibold">
+                          {section.heading}
+                        </h4>
+                      ) : null}
+
+                      {section.paragraphs?.map((paragraph) => (
+                        <p key={paragraph} className="text-body text-base">
+                          {paragraph}
+                        </p>
+                      ))}
+
+                      {section.definitions?.length ? (
+                        <dl className="flex flex-col gap-3">
+                          {section.definitions.map((definition) => (
+                            <div
+                              key={definition.title}
+                              className="flex flex-col gap-1"
+                            >
+                              <dt className="text-ink text-base font-semibold">
+                                {definition.title}
+                              </dt>
+                              <dd className="text-body text-base">
+                                {definition.text}
+                              </dd>
+                            </div>
+                          ))}
+                        </dl>
+                      ) : null}
+
+                      {section.bullets?.length ? (
+                        <Bullets items={section.bullets} />
+                      ) : null}
+                    </div>
                   ))}
-                </ul>
+                </div>
               ) : null}
             </div>
           </div>
