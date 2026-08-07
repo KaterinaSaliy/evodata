@@ -120,3 +120,21 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/*
+ * Contact separators — see `src/lib/scramble.ts`. The "@", the dot and the plus
+ * are what make a string look like an address or a dial number, so the markup
+ * never carries them: it leaves an empty element here and the browser draws the
+ * character. Address harvesters read HTML, not stylesheets.
+ */
+.m-a::before {
+  content: "@";
+}
+
+.m-b::before {
+  content: ".";
+}
+
+.m-c::before {
+  content: "+";
+}

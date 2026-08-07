@@ -72,7 +72,6 @@ function Blocks({ blocks }: { blocks: readonly LegalBlock[] }) {
             key={index}
             scheme="mailto"
             scrambled={scramble(contacts.dataProtectionEmail)}
-            scrambledHref={scramble(contacts.dataProtectionEmail)}
             className="text-brand w-fit text-base underline underline-offset-4 transition-opacity hover:opacity-70 lg:text-lg"
           />
         );

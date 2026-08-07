@@ -9,6 +9,8 @@
  * which puts the real value back together in the browser.
  *
  * To change a contact, edit the readable value here — nothing else to update.
+ * One rule: a value must not contain "~", "^" or "*" — `scramble` uses those
+ * three as stand-ins for "@", "." and "+".
  */
 export const contacts = {
   email: "hello@evodata.com",

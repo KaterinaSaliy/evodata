@@ -65,7 +65,6 @@ export default function AboutPage() {
                 <ContactLink
                   scheme="mailto"
                   scrambled={scramble(contacts.email)}
-                  scrambledHref={scramble(contacts.email)}
                   className="inline-block underline-offset-4 transition-opacity hover:underline hover:opacity-70"
                 />
               </dd>

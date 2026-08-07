@@ -44,7 +44,6 @@ export function Footer() {
               <ContactLink
                 scheme="mailto"
                 scrambled={scramble(contacts.email)}
-                scrambledHref={scramble(contacts.email)}
                 className="w-fit border-b border-white/70 pb-[13px] text-[28px] leading-[30px] font-medium transition-opacity hover:opacity-80 lg:text-[36px]"
               />
             </div>
