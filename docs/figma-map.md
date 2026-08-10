@@ -45,6 +45,7 @@
 | Text sm | 14 / 20 (Medium) |
 
 Сіра шкала: `Gray/900 #101828` · `600 #475467` · `500 #667085` · `400 #98A2B3` ·
-`300 #D0D5DD` · `200 #EAECF0` · `50 #F9FAFB` · `Base/White #FFFFFF` · `Base/Black #000000`.
+`300 #D0D5DD` · `200 #EAECF0` · `100 #F2F4F7` (шапка таблиці стека, `9372:362`) ·
+`50 #F9FAFB` · `Base/White #FFFFFF` · `Base/Black #000000`.
 
 Shadow/sm: `0 1 2 #1018280F`, `0 1 3 #1018281A`.

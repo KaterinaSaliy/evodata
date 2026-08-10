@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState, type ReactNode } from "react";
+import { ChevronDownIcon } from "./icons";
 import { cn } from "@/lib/utils";
 
 export type TabItem = {
@@ -19,6 +20,14 @@ type TabsProps = {
   variant?: "sidebar" | "inline";
   /** Accessible name of the mobile select in the `inline` variant. */
   label?: string;
+  /**
+   * Serif heading above the tab row (`inline` only). With it the block also
+   * collapses: the heading is the toggle, the tab row stays visible —
+   * About Us, node 9372:1069.
+   */
+  heading?: string;
+  /** Whether a collapsible block starts expanded. */
+  defaultOpen?: boolean;
   /** Width of the side list (459px in the designs). */
   listClassName?: string;
   className?: string;
@@ -35,12 +44,22 @@ export function Tabs({
   items,
   variant = "sidebar",
   label,
+  heading,
+  defaultOpen = true,
   listClassName,
   className,
 }: TabsProps) {
   const firstEnabled = items.findIndex((item) => item.panel);
   const [active, setActive] = useState(firstEnabled === -1 ? 0 : firstEnabled);
+  const [open, setOpen] = useState(defaultOpen);
   const baseId = useId();
+
+  // Picking a tab while the block is collapsed would otherwise do nothing
+  // visible, so selecting always expands it.
+  const select = (index: number) => {
+    setActive(index);
+    setOpen(true);
+  };
 
   const panels = items.map((item, index) =>
     item.panel ? (
@@ -61,13 +80,41 @@ export function Tabs({
 
   if (variant === "inline") {
     return (
-      <div className={cn("flex flex-col gap-8 lg:gap-[72px]", className)}>
+      <div
+        className={cn(
+          "flex flex-col gap-8",
+          heading ? "lg:gap-16" : "lg:gap-[72px]",
+          className,
+        )}
+      >
+        {heading ? (
+          <h3 className="lg:px-8">
+            <button
+              type="button"
+              aria-expanded={open}
+              aria-controls={`${baseId}-body`}
+              onClick={() => setOpen(!open)}
+              className="flex w-full cursor-pointer items-center justify-between gap-6 text-left"
+            >
+              <span className="text-ink lg:text-display-2xl font-serif text-[32px] leading-[1.1] tracking-[-0.02em] sm:text-[44px]">
+                {heading}
+              </span>
+              <ChevronDownIcon
+                className={cn(
+                  "size-8 shrink-0 text-gray-400 transition-transform lg:size-12",
+                  open && "rotate-180",
+                )}
+              />
+            </button>
+          </h3>
+        ) : null}
+
         {/* Mobile: the row of tabs would not fit, so the design switches to a
             select. It drives the same state as the buttons below. */}
         <select
-          aria-label={label}
+          aria-label={label ?? heading}
           value={active}
-          onChange={(event) => setActive(Number(event.target.value))}
+          onChange={(event) => select(Number(event.target.value))}
           className="text-ink w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 text-base font-medium lg:hidden"
         >
           {items.map((item, index) => (
@@ -89,7 +136,7 @@ export function Tabs({
                 aria-selected={active === index}
                 aria-controls={`${baseId}-panel-${index}`}
                 disabled={disabled}
-                onClick={() => setActive(index)}
+                onClick={() => select(index)}
                 // The rule above the labels is the indicator: grey for the rest,
                 // brand colour for the active one.
                 className={cn(
@@ -106,7 +153,13 @@ export function Tabs({
           })}
         </div>
 
-        <div className="max-w-[892px]">{panels}</div>
+        <div
+          id={`${baseId}-body`}
+          hidden={heading ? !open : undefined}
+          className={cn("max-w-[892px]", heading && "lg:px-8")}
+        >
+          {panels}
+        </div>
       </div>
     );
   }
