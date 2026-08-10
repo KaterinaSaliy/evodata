@@ -7,7 +7,6 @@ import { FeatureCards } from "@/components/ui/FeatureCards";
 import { RichBlocks, type RichBlock } from "@/components/ui/RichBlocks";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Tabs } from "@/components/ui/Tabs";
-import { TopicList } from "@/components/ui/TopicList";
 import { Metrics } from "@/components/sections/home/Metrics";
 import { Quote } from "@/components/sections/home/Quote";
 import { Roadmaps } from "@/components/sections/home/Roadmaps";
@@ -49,15 +48,17 @@ export default function IndustriesPage() {
             {customSolutions.title}
           </SectionHeading>
 
-          <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
-            <TopicList
-              items={customSolutions.topics}
-              className="shrink-0 lg:w-[459px]"
-            />
-            <RichBlocks
-              blocks={[{ type: "bullets", items: customSolutions.activeItems }]}
-            />
-          </div>
+          <Tabs
+            listClassName="lg:w-[459px]"
+            items={customSolutions.topics.map((topic) => ({
+              label: topic.label,
+              panel: (
+                <RichBlocks
+                  blocks={[{ type: "bullets", items: topic.items }]}
+                />
+              ),
+            }))}
+          />
         </Container>
       </section>
 
@@ -73,6 +74,18 @@ export default function IndustriesPage() {
             </p>
           </div>
           <FeatureCards cards={businessValue.cards} variant="photo" />
+
+          <div className="flex max-w-[892px] flex-col gap-6">
+            <h3 className="text-ink text-xl font-semibold lg:text-[24px] lg:leading-8">
+              {businessValue.outcomes.title}
+            </h3>
+            <RichBlocks
+              blocks={[
+                { type: "bullets", items: businessValue.outcomes.items },
+                { type: "paragraph", text: businessValue.outcomes.closing },
+              ]}
+            />
+          </div>
         </Container>
       </section>
 
@@ -87,10 +100,7 @@ export default function IndustriesPage() {
             listClassName="lg:w-[459px]"
             items={stages.tabs.map((tab) => ({
               label: tab.label,
-              panel:
-                "blocks" in tab ? (
-                  <RichBlocks blocks={tab.blocks as readonly RichBlock[]} />
-                ) : undefined,
+              panel: <RichBlocks blocks={tab.blocks as readonly RichBlock[]} />,
             }))}
           />
         </Container>
@@ -121,7 +131,10 @@ export default function IndustriesPage() {
                 </h3>
                 <RichBlocks
                   blocks={[
-                    { type: "paragraph", text: group.text },
+                    ...group.paragraphs.map((text) => ({
+                      type: "paragraph" as const,
+                      text,
+                    })),
                     { type: "bullets", items: group.items },
                   ]}
                 />
