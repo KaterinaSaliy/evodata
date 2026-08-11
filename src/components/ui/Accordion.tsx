@@ -15,12 +15,16 @@ export type AccordionSection = {
   /** Named items: a semibold title with a paragraph under it. */
   definitions?: readonly { title: string; text: string }[];
   bullets?: readonly string[];
+  /** Numbered list — the deck numbers the "How We Help" answers. */
+  steps?: readonly string[];
 };
 
 export type AccordionItem = {
   title: string;
   /** List items inside the expanded block. */
   bullets?: readonly string[];
+  /** Numbered list — the order of the steps carries meaning. */
+  steps?: readonly string[];
   /** Paragraphs inside the expanded block. */
   paragraphs?: readonly string[];
   /** Sections rendered after the paragraphs and bullets above. */
@@ -50,6 +54,21 @@ function Bullets({ items }: { items: readonly string[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+function Steps({ items }: { items: readonly string[] }) {
+  return (
+    <ol className="flex list-none flex-col gap-[14px] pl-6">
+      {items.map((item, index) => (
+        <li key={item} className="flex items-start gap-4">
+          <span className="text-ink w-5 shrink-0 text-base font-semibold">
+            {index + 1}.
+          </span>
+          <span className="text-body text-base">{item}</span>
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -107,15 +126,22 @@ export function Accordion({
               role="region"
               aria-labelledby={buttonId}
               hidden={!isOpen}
-              className="pt-6"
+              // The blocks are 24px apart, the paragraphs inside one block 12px.
+              className="flex flex-col gap-6 pt-6"
             >
-              {item.paragraphs?.map((paragraph) => (
-                <p key={paragraph} className="text-body pb-3 text-base">
-                  {paragraph}
-                </p>
-              ))}
+              {item.paragraphs?.length ? (
+                <div className="flex flex-col gap-3">
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-body text-base">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
 
               {item.bullets?.length ? <Bullets items={item.bullets} /> : null}
+
+              {item.steps?.length ? <Steps items={item.steps} /> : null}
 
               {item.sections?.length ? (
                 <div className="flex flex-col gap-6">
@@ -156,6 +182,10 @@ export function Accordion({
 
                       {section.bullets?.length ? (
                         <Bullets items={section.bullets} />
+                      ) : null}
+
+                      {section.steps?.length ? (
+                        <Steps items={section.steps} />
                       ) : null}
                     </div>
                   ))}

@@ -28,39 +28,59 @@ export function organizationSchema(): WithContext<Organization> {
   };
 }
 
+type FaqTopic = (typeof faq.topics)[number];
+
+/**
+ * The whole answer as one string: the lead paragraphs plus every block of the
+ * accordion under them. One Question per topic — the block titles ("What Do You
+ * Get?") repeat across topics, so emitting them as questions of their own would
+ * hand search engines seven identical ones.
+ */
+function answerText(topic: FaqTopic): string {
+  const parts: string[] = [...topic.answer];
+
+  for (const item of topic.items as readonly {
+    title: string;
+    paragraphs?: readonly string[];
+    bullets?: readonly string[];
+    steps?: readonly string[];
+    sections?: readonly {
+      heading?: string;
+      paragraphs?: readonly string[];
+      definitions?: readonly { title: string; text: string }[];
+      bullets?: readonly string[];
+    }[];
+  }[]) {
+    const body = [
+      ...(item.paragraphs ?? []),
+      ...(item.bullets ?? []),
+      ...(item.steps ?? []),
+      ...(item.sections ?? []).flatMap((section) => [
+        ...(section.heading ? [section.heading] : []),
+        ...(section.paragraphs ?? []),
+        ...(section.definitions ?? []).map((d) => `${d.title}: ${d.text}`),
+        ...(section.bullets ?? []),
+      ]),
+    ];
+    parts.push(`${item.title} ${body.join(" ")}`.trim());
+  }
+
+  return parts.join(" ");
+}
+
 /**
  * Schema.org FAQPage — question/answer markup for rich search results.
- * Only the pairs that have copy in the design are included.
+ * All seven topics of the page, each with its full answer.
  */
 export function faqSchema(): WithContext<FAQPage> {
-  const { activeTopic } = faq;
-  const withAnswers = activeTopic.items.filter(
-    (
-      item,
-    ): item is (typeof activeTopic.items)[0] & { bullets: readonly string[] } =>
-      "bullets" in item &&
-      Array.isArray(item.bullets) &&
-      item.bullets.length > 0,
-  );
-
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: activeTopic.question,
-        acceptedAnswer: { "@type": "Answer", text: activeTopic.answer },
-      },
-      ...withAnswers.map((item) => ({
-        "@type": "Question" as const,
-        name: item.title,
-        acceptedAnswer: {
-          "@type": "Answer" as const,
-          text: item.bullets.join(" "),
-        },
-      })),
-    ],
+    mainEntity: faq.topics.map((topic) => ({
+      "@type": "Question" as const,
+      name: topic.question,
+      acceptedAnswer: { "@type": "Answer" as const, text: answerText(topic) },
+    })),
   };
 }
 

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { InnerHero } from "@/components/layout/InnerHero";
-import { Accordion } from "@/components/ui/Accordion";
-import { TopicList } from "@/components/ui/TopicList";
+import { Accordion, type AccordionItem } from "@/components/ui/Accordion";
+import { Tabs } from "@/components/ui/Tabs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema } from "@/lib/schema";
 import { faq } from "@/content/en/faq";
@@ -35,22 +35,33 @@ export default function FaqPage() {
             {faq.title}
           </h2>
 
-          <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
-            <TopicList items={faq.topics} className="shrink-0 lg:w-[389px]" />
+          {/* The side list (node 9376:6259) switches the panel: the deck fills
+              all seven topics, the design draws the first one. */}
+          <Tabs
+            listClassName="lg:w-[389px]"
+            items={faq.topics.map((topic) => ({
+              label: topic.label,
+              panel: (
+                <div className="flex flex-col gap-8 lg:gap-12">
+                  <div className="flex flex-col gap-4">
+                    <h3 className="text-ink font-serif text-[28px] leading-[1.15] tracking-[-0.96px] sm:text-[36px] lg:text-[48px] lg:leading-[60px]">
+                      {topic.question}
+                    </h3>
+                    {topic.answer.map((paragraph) => (
+                      <p
+                        key={paragraph}
+                        className="text-body text-lg font-medium lg:text-xl"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
 
-            <div className="flex min-w-0 flex-1 flex-col gap-8 lg:gap-12">
-              <div className="flex flex-col gap-4">
-                <h3 className="text-ink font-serif text-[28px] leading-[1.15] tracking-[-0.96px] sm:text-[36px] lg:text-[48px] lg:leading-[60px]">
-                  {faq.activeTopic.question}
-                </h3>
-                <p className="text-body text-lg font-medium lg:text-xl">
-                  {faq.activeTopic.answer}
-                </p>
-              </div>
-
-              <Accordion items={faq.activeTopic.items} />
-            </div>
-          </div>
+                  <Accordion items={topic.items as readonly AccordionItem[]} />
+                </div>
+              ),
+            }))}
+          />
         </Container>
       </section>
     </>
