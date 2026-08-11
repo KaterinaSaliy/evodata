@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { ContactLink } from "@/components/ui/ContactLink";
 import { contacts, scramble } from "@/config/contacts";
+import { common } from "@/content/en/common";
 import type { LegalBlock, LegalDocumentContent } from "@/content/en/legal";
 
 /** Anchor for a section, so the contents list can link to it. */
@@ -72,6 +73,8 @@ function Blocks({ blocks }: { blocks: readonly LegalBlock[] }) {
             key={index}
             scheme="mailto"
             scrambled={scramble(contacts.dataProtectionEmail)}
+            label={common.contact.emailLabel}
+            copiedLabel={common.contact.copied}
             className="text-brand w-fit text-base underline underline-offset-4 transition-opacity hover:opacity-70 lg:text-lg"
           />
         );

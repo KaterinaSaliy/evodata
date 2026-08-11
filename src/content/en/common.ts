@@ -11,6 +11,16 @@ export const common = {
     talkLabel: "Let’s talk",
     rights: "© 2024 evodata. All rights reserved.",
   },
+
+  /**
+   * The phone and the e-mail are not in the markup (see `src/lib/scramble.ts`),
+   * so the control that hands them over needs a name of its own.
+   */
+  contact: {
+    phoneLabel: "Show and copy the phone number",
+    emailLabel: "Show and copy the e-mail address",
+    copied: "Copied",
+  },
 } as const;
 
 export type CommonContent = typeof common;

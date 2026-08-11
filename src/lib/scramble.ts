@@ -68,11 +68,14 @@ function noiseAt(seed: number, index: number): string {
  *    can flip it back for the reader even with JavaScript off);
  * 2. "@", "." and "+" are replaced by stand-ins and drawn from CSS instead, so
  *    no address- or number-shaped token is left in the HTML at all;
- * 3. noise is wedged in after every second character and hidden with CSS, so a
- *    scan that reverses the string anyway comes away with a plausible-looking
- *    but non-existent contact.
+ * 3. noise is wedged in after every second character and clipped out of sight
+ *    by CSS — clipped rather than hidden, so it stays in the text the page
+ *    reports and a scan that reverses the string anyway comes away with a
+ *    plausible-looking but non-existent contact.
  *
- * `unscramble` puts it back — that runs in the browser only, once mounted.
+ * `unscramble` puts it back. It runs in the browser and only when the reader
+ * asks for the contact — nothing undoes this on its own, so a scraper that
+ * executes the page scripts is left with the same three layers.
  */
 export function scramble(value: string): string {
   const seed = seedOf(value);
@@ -102,7 +105,7 @@ export function unscramble(scrambled: string): string {
 export type ScrambledPart =
   /** Shown as is — reading order is fixed by the right-to-left override. */
   | { kind: "text"; value: string }
-  /** Wedged-in noise: rendered, then hidden with `display: none`. */
+  /** Wedged-in noise: rendered, then clipped to nothing by CSS. */
   | { kind: "noise"; value: string }
   /** Empty element whose CSS rule prints the "@", the dot or the plus. */
   | { kind: "standIn"; className: string };

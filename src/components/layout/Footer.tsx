@@ -39,11 +39,15 @@ export function Footer() {
                 scheme="tel"
                 scrambled={scramble(contacts.phone)}
                 scrambledHref={scramble(contacts.phoneHref)}
+                label={common.contact.phoneLabel}
+                copiedLabel={common.contact.copied}
                 className="w-fit text-lg font-medium transition-opacity hover:opacity-80"
               />
               <ContactLink
                 scheme="mailto"
                 scrambled={scramble(contacts.email)}
+                label={common.contact.emailLabel}
+                copiedLabel={common.contact.copied}
                 className="w-fit border-b border-white/70 pb-[13px] text-[28px] leading-[30px] font-medium transition-opacity hover:opacity-80 lg:text-[36px]"
               />
             </div>

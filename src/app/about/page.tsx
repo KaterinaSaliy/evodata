@@ -12,6 +12,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Tabs } from "@/components/ui/Tabs";
 import { VideoSection } from "@/components/sections/home/VideoSection";
 import { about } from "@/content/en/about";
+import { common } from "@/content/en/common";
 import { contacts, scramble } from "@/config/contacts";
 
 export const metadata: Metadata = {
@@ -54,6 +55,8 @@ export default function AboutPage() {
                   scheme="tel"
                   scrambled={scramble(contacts.phone)}
                   scrambledHref={scramble(contacts.phoneHref)}
+                  label={common.contact.phoneLabel}
+                  copiedLabel={common.contact.copied}
                   className="inline-block underline-offset-4 transition-opacity hover:underline hover:opacity-70"
                 />
               </dd>
@@ -67,6 +70,8 @@ export default function AboutPage() {
                 <ContactLink
                   scheme="mailto"
                   scrambled={scramble(contacts.email)}
+                  label={common.contact.emailLabel}
+                  copiedLabel={common.contact.copied}
                   className="inline-block underline-offset-4 transition-opacity hover:underline hover:opacity-70"
                 />
               </dd>
