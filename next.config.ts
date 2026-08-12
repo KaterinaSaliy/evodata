@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   // автоматично; AVIF додаємо явно першим у списку пріоритету.
   images: {
     formats: ["image/avif", "image/webp"],
+    // Next 16 only serves qualities listed here (75 is the default). 90 is for
+    // the client's 3D renders: their halftone dot pattern is fine detail that
+    // AVIF at 75 smears into blotches — see the About Us slider.
+    qualities: [75, 90],
   },
 
   // Базові безпекові заголовки (покращують Lighthouse Best Practices).

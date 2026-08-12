@@ -218,6 +218,9 @@ export default function AboutPage() {
                   alt=""
                   fill
                   sizes="420px"
+                  // The halftone dots on the render are exactly the detail the
+                  // default quality of 75 turns to mush — see next.config.ts.
+                  quality={90}
                   className="object-cover"
                 />
               </div>

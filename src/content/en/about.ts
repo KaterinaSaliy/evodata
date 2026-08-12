@@ -161,15 +161,15 @@ export const about = {
     intro:
       "We design, develop, and deploy AI solutions that deliver valuable business outcomes — from automation and operational efficiency to enhanced customer experiences.",
     /**
-     * Seven solutions from the deck. The design draws two of them, so only the
-     * first two photos are its own; the rest reuse the What We Do shots until
-     * portrait originals arrive — see README.
+     * Seven solutions from the deck, each with the render the client supplied
+     * for it. The renders carry a word inside the frame, so they are fitted to
+     * the width of the card column rather than cropped to fill it — see README.
      */
     cards: [
       {
         title: "AI Agents & Autonomous Systems",
         lead: "Advanced AI systems capable of executing complex, multi-step tasks with minimal human intervention.",
-        image: "/images/about/solution-01.webp",
+        image: "/images/about/solutions/ai-agents.webp",
         groups: [
           {
             title: "Typical Use Cases",
@@ -195,7 +195,7 @@ export const about = {
       {
         title: "Generative AI & Content Creation",
         lead: "Leverage Large Language Models (LLMs) and generative AI technologies to create high-quality content at scale while maintaining brand consistency.",
-        image: "/images/about/solution-02.webp",
+        image: "/images/about/solutions/generative-ai.webp",
         groups: [
           {
             title: "Typical Use Cases",
@@ -222,7 +222,7 @@ export const about = {
       {
         title: "Predictive Analytics & Forecasting",
         lead: "Transform historical business data into actionable forecasts and strategic insights.",
-        image: "/images/wwd/solutions/predictive-analytics.webp",
+        image: "/images/about/solutions/predictive-analytics.webp",
         groups: [
           {
             title: "Typical Use Cases",
@@ -249,7 +249,7 @@ export const about = {
       {
         title: "Workflow Automation with n8n",
         lead: "For business processes that do not require enterprise-scale infrastructure, we use n8n to rapidly deliver automation solutions that provide immediate operational value.",
-        image: "/images/wwd/solutions/deep-process-automation.webp",
+        image: "/images/about/solutions/workflow-automation.webp",
         groups: [
           {
             title: "Typical Use Cases",
@@ -275,7 +275,7 @@ export const about = {
       {
         title: "Data Integration & AI Foundations",
         lead: "Successful AI initiatives require high-quality, well-structured data. We build the data foundations necessary for scalable AI adoption.",
-        image: "/images/wwd/solutions/data-driven-decision-making.webp",
+        image: "/images/about/solutions/data-integration.webp",
         groups: [
           {
             title: "Typical Use Cases",
@@ -301,7 +301,7 @@ export const about = {
       {
         title: "Conversational AI & Intelligent Assistants",
         lead: "Intelligent communication systems that enhance interactions with customers, employees, and business partners.",
-        image: "/images/wwd/solutions/enhanced-customer-experience.webp",
+        image: "/images/about/solutions/conversational-ai.webp",
         groups: [
           {
             title: "Typical Use Cases",
@@ -327,7 +327,7 @@ export const about = {
       {
         title: "Intelligent Document Processing (IDP)",
         lead: "Automate document-intensive workflows using AI-powered extraction, classification, and validation technologies.",
-        image: "/images/wwd/solutions/intelligent-content-generation.webp",
+        image: "/images/about/solutions/document-processing.webp",
         groups: [
           {
             title: "Typical Use Cases",
