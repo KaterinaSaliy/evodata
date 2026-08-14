@@ -76,12 +76,14 @@
  * exactly under the heading while the strip still runs to the window edge.
  * Below that the card is viewport-bound (`--card` capped at 72vw) and the
  * padding centres it, leaving its neighbours peeking in on both sides.
+ * A strip whose card fills the width instead (About Us — node 9416:106887)
+ * says so with its own `--gutter-sm`.
  *
  * `scroll-padding` has to match: with mandatory snapping the browser would
  * otherwise snap the first card flush to the edge and swallow the padding.
  */
 @utility strip-gutter {
-  --gutter: calc((100% - min(var(--card), 72vw)) / 2);
+  --gutter: var(--gutter-sm, calc((100% - min(var(--card), 72vw)) / 2));
   padding-inline: var(--gutter);
   scroll-padding-inline: var(--gutter);
 

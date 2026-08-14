@@ -162,8 +162,9 @@ export const about = {
       "We design, develop, and deploy AI solutions that deliver valuable business outcomes — from automation and operational efficiency to enhanced customer experiences.",
     /**
      * Seven solutions from the deck, each with the render the client supplied
-     * for it. The renders carry a word inside the frame, so they are fitted to
-     * the width of the card column rather than cropped to fill it — see README.
+     * for it. The renders come as tall frames with the object centred and a
+     * word inside it, which is what lets one file serve both the square on a
+     * phone and the column on a desktop — see README.
      */
     cards: [
       {

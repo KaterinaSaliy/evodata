@@ -201,23 +201,30 @@ export default function AboutPage() {
         <DragScroller
           ariaLabel={inDemand.title}
           controls
-          style={{ "--card": "1232px" } as CSSProperties}
+          style={
+            { "--card": "1232px", "--gutter-sm": "1rem" } as CSSProperties
+          }
           className="strip-gutter mt-10 flex snap-x snap-mandatory gap-6 lg:mt-16"
         >
           {inDemand.cards.map((card) => (
             <article
               key={card.title}
-              // Below `lg` the width matches the other strips on the site
-              // (72vw, neighbours peeking); from `lg` it is the 1232px card of
-              // the design, shrinking only when the window cannot hold it.
-              className="flex w-[min(var(--card),72vw)] shrink-0 snap-start overflow-hidden rounded-xl border border-gray-200 bg-white lg:min-h-[804px] lg:w-[min(var(--card),86vw)]"
+              // Below `lg` one card fills the width of the container, as in the
+              // mobile design; from `lg` it is the 1232px card of the desktop
+              // one, shrinking only when the window cannot hold it.
+              className="flex w-full shrink-0 snap-start flex-col overflow-hidden rounded-xl border border-gray-200 bg-white lg:min-h-[804px] lg:w-[min(var(--card),86vw)] lg:flex-row"
             >
-              <div className="relative hidden w-[420px] shrink-0 lg:block">
+              {/* Square above the text on a phone (node 9416:106894), a column
+                  down the left of the card from `lg` (node 9372:914). The
+                  render is centred in a much taller frame, so every one of
+                  these crops keeps the object whole — a box wider than about
+                  1.4:1 would start cutting into it, hence the ratio between. */}
+              <div className="relative aspect-square w-full shrink-0 sm:aspect-7/5 lg:aspect-auto lg:w-[420px]">
                 <Image
                   src={card.image}
                   alt=""
                   fill
-                  sizes="420px"
+                  sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1023px) calc(100vw - 64px), 420px"
                   // The halftone dots on the render are exactly the detail the
                   // default quality of 75 turns to mush — see next.config.ts.
                   quality={90}

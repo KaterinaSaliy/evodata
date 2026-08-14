@@ -73,12 +73,15 @@ export function RichBlocks({ blocks }: { blocks: readonly RichBlock[] }) {
               <ul key={index} className="flex flex-col gap-[14px]">
                 {block.items.map((item) => (
                   <li key={item} className="flex items-start gap-4">
+                    {/* The dot sits low inside its own 18px box (cy 13), which
+                        is what puts it on the middle of the first line — the
+                        marker itself starts flush with the text, as in Figma. */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/images/icon-bullet.svg"
                       alt=""
                       aria-hidden="true"
-                      className="mt-2 h-[18px] w-[6px] shrink-0"
+                      className="h-[18px] w-[6px] shrink-0"
                     />
                     <span className="text-body text-lg lg:text-xl">{item}</span>
                   </li>
