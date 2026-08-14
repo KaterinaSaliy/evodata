@@ -58,6 +58,7 @@ npm run format       # форматування Prettier
 | Мови | `src/config/i18n.ts` |
 | Кольори, шрифти, типографіка | `src/app/globals.css` (блок `@theme`) |
 | Зображення, відео, шрифти | `public/images`, `public/videos`, `public/fonts` |
+| Іконка сайту (favicon) | `src/app/icon.svg` — див. «Іконки сайту» |
 | SEO за замовчуванням | `src/app/layout.tsx` (об'єкт `metadata`) |
 | Мапа сайту / robots | `src/app/sitemap.ts`, `src/app/robots.ts` |
 
@@ -70,6 +71,49 @@ npm run format       # форматування Prettier
 ```bash
 node -e "require('sharp')('in.png').resize(1800).webp({quality:85}).toFile('out.webp')"
 ```
+
+### Іконки сайту
+
+Next бере їх із `src/app/` за іменами файлів і сам додає `<link>` у `<head>`:
+
+| Файл | Для чого |
+| --- | --- |
+| `icon.svg` | вкладка браузера в сучасних браузерах, `sizes="any"` |
+| `favicon.ico` | 16/32/48 px, запасний варіант і прямий запит `/favicon.ico` |
+| `apple-icon.png` | 180×180, іконка на домашньому екрані iOS |
+
+**Джерело — `icon.svg`**, решта з нього генерується. Він векторний, тому
+масштабується без втрат: еліпс із градієнтом плюс той самий контур «evo», що й
+у логотипі шапки (`public/images/logo-evo.svg`), — не растр, який довелося б
+перемальовувати під кожен розмір.
+
+Кадр підігнано під іконку: у вихідному PNG замовника еліпс займав 93 % ширини
+й 73 % висоти квадрата, тобто в 16 px від нього лишалася б крапка. У `icon.svg`
+поле обрізане до самого еліпса, і він іде на всю ширину плитки.
+
+Після зміни `icon.svg` перегенерувати растри:
+
+```bash
+node -e "
+const sharp=require('sharp'),fs=require('fs'),VB=1914;
+const render=s=>sharp('src/app/icon.svg',{density:Math.max(1,72*s*4/VB)}).resize(s,s,{kernel:'lanczos3'});
+(async()=>{
+  const sizes=[16,32,48], pngs=[];
+  for (const s of sizes) pngs.push(await render(s).png({compressionLevel:9}).toBuffer());
+  const head=Buffer.alloc(6); head.writeUInt16LE(1,2); head.writeUInt16LE(sizes.length,4);
+  let off=6+16*sizes.length; const dir=[];
+  pngs.forEach((p,i)=>{const e=Buffer.alloc(16);
+    e.writeUInt8(sizes[i],0); e.writeUInt8(sizes[i],1); e.writeUInt16LE(1,4); e.writeUInt16LE(32,6);
+    e.writeUInt32LE(p.length,8); e.writeUInt32LE(off,12); off+=p.length; dir.push(e);});
+  fs.writeFileSync('src/app/favicon.ico', Buffer.concat([head,...dir,...pngs]));
+  const mark=await render(152).png().toBuffer();
+  await sharp({create:{width:180,height:180,channels:3,background:'#ffffff'}})
+    .composite([{input:mark,left:14,top:14}]).png({compressionLevel:9}).toFile('src/app/apple-icon.png');
+})();"
+```
+
+`apple-icon.png` — єдиний непрозорий із трьох: iOS зафарбовує прозоре чорним і
+сам заокруглює кути, тому знак лежить на білому з полем у 14 px.
 
 ### Якість зображень
 
