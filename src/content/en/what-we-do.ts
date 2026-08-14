@@ -354,7 +354,6 @@ export const whatWeDo = {
         ],
         sections: [
           {
-            heading: "Typical Projects",
             definitions: [
               {
                 title: "Proof of Concept (PoC)",
