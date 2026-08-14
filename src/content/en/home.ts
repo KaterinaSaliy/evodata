@@ -466,10 +466,10 @@ export const home = {
     /** "evodata in numbers" heading — "evo" and "data" are styled differently. */
     titleSuffix: " in numbers",
     items: [
-      { label: "Years of experience", value: "5+" },
-      { label: "Projects", value: "8" },
-      { label: "Professional Team", value: "6" },
-      { label: "Proof of concepts", value: "12" },
+      { label: "Years of experience", value: "10+" },
+      { label: "Projects", value: "17" },
+      { label: "Professional Team", value: "13" },
+      { label: "Proof of concepts", value: "23" },
     ],
   },
 } as const;
