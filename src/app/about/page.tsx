@@ -201,9 +201,7 @@ export default function AboutPage() {
         <DragScroller
           ariaLabel={inDemand.title}
           controls
-          style={
-            { "--card": "1232px", "--gutter-sm": "1rem" } as CSSProperties
-          }
+          style={{ "--card": "1232px", "--gutter-sm": "1rem" } as CSSProperties}
           className="strip-gutter mt-10 flex snap-x snap-mandatory gap-6 lg:mt-16"
         >
           {inDemand.cards.map((card) => (

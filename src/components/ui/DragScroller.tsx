@@ -36,7 +36,9 @@ const SWIPE_THRESHOLD = 60;
  */
 function cardDistance(el: HTMLElement) {
   const [first, second] = Array.from(el.children) as HTMLElement[];
-  return first && second ? second.offsetLeft - first.offsetLeft : el.clientWidth;
+  return first && second
+    ? second.offsetLeft - first.offsetLeft
+    : el.clientWidth;
 }
 
 const scrollBehavior = (): ScrollBehavior =>
@@ -103,7 +105,8 @@ export function DragScroller({
       Math.abs(moved) < SWIPE_THRESHOLD
         ? 0
         : Math.max(1, Math.round(Math.abs(moved) / distance));
-    const target = drag.current.startScroll + Math.sign(moved) * cards * distance;
+    const target =
+      drag.current.startScroll + Math.sign(moved) * cards * distance;
 
     el.scrollTo({
       left: Math.min(Math.max(target, 0), el.scrollWidth - el.clientWidth),

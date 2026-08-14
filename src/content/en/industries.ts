@@ -6,11 +6,17 @@ import type { RichBlock } from "@/components/ui/RichBlocks";
  * Texts follow the client deck «Industries.pdf».
  */
 export const industries = {
+  /**
+   * The hero carries what used to be the `Quote` block further down the page
+   * (node 9318:77595) — the block itself is gone from Industries, so the line
+   * is said once and at the top.
+   */
   hero: {
     breadcrumb: "Industries",
-    title: "iGaming development services",
+    title:
+      "Technology and innovation are \nthe foundation of competitive advantage.",
     subtitle:
-      "Every enterprise wants its operations to run faster. You want greater results with fewer resources.",
+      "Organizations that successfully leverage advanced technologies are better positioned to improve efficiency, accelerate growth, and outperform their competitors.",
   },
 
   /** "Our custom solutions" — node 9325:3623; deck p. 2. */

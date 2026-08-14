@@ -8,7 +8,6 @@ import { RichBlocks, type RichBlock } from "@/components/ui/RichBlocks";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Tabs } from "@/components/ui/Tabs";
 import { Metrics } from "@/components/sections/home/Metrics";
-import { Quote } from "@/components/sections/home/Quote";
 import { Roadmaps } from "@/components/sections/home/Roadmaps";
 import { VideoSection } from "@/components/sections/home/VideoSection";
 import { industries } from "@/content/en/industries";
@@ -168,8 +167,8 @@ export default function IndustriesPage() {
         </Container>
       </section>
 
-      {/* Quote and video — shared blocks */}
-      <Quote />
+      {/* Video — shared block. The quote that used to sit above it is now the
+          heading of the hero, so it is not repeated here. */}
       <VideoSection />
 
       {/* AI Implementation Roadmaps — node 9329:4062, same as on the home page */}
