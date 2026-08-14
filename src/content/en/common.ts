@@ -6,8 +6,7 @@
 export const common = {
   /** Footer — node 9423:1481. */
   footer: {
-    ctaTitle: "Let's build \nthe future together!",
-    ctaSubtitle: "Contact us today!",
+    cta: "Contact us today!",
     talkLabel: "Let’s talk",
     rights: "© 2024 evodata. All rights reserved.",
   },

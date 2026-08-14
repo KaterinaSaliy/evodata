@@ -25,10 +25,9 @@ export function Footer() {
         <div className="flex w-full flex-col gap-12 sm:flex-row sm:justify-between lg:max-w-[1147px]">
           <div className="flex flex-col gap-10 sm:flex-row sm:gap-[109px]">
             {/* Call to action */}
-            <div className="flex flex-col gap-5 text-xl font-medium lg:w-[219px]">
-              <p className="whitespace-pre-line">{common.footer.ctaTitle}</p>
-              <p>{common.footer.ctaSubtitle}</p>
-            </div>
+            <p className="text-xl font-medium lg:w-[219px]">
+              {common.footer.cta}
+            </p>
 
             {/* Contacts */}
             <div className="flex flex-col gap-[11px] lg:w-[331px]">
