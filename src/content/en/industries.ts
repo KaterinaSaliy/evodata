@@ -108,8 +108,9 @@ export const industries = {
 
   /**
    * "The Business Value of AI Transformation" — node 9329:4246; deck p. 3.
-   * The fourth card comes from the design; the deck names it "Create a
-   * Sustainable Competitive Advantage" instead — see README.
+   * The fourth card follows the deck ("Create a Sustainable Competitive
+   * Advantage"), not the design, which called it "Predictive Analytics" —
+   * settled by the client.
    */
   businessValue: {
     title: "The Business Value of AI Transformation",
@@ -135,9 +136,9 @@ export const industries = {
         image: "/images/ind/value-03.webp",
       },
       {
-        title: "Predictive Analytics",
+        title: "Create a Sustainable Competitive Advantage",
         description:
-          "AI models analyze large volumes of historical and real-time data to identify trends, forecast demand, evaluate risks, and anticipate market changes. These insights help organizations make proactive decisions and adapt their strategies with confidence.",
+          "AI enables businesses to respond faster to market opportunities, launch new products more efficiently, and scale operations with greater agility. Automated systems operate around the clock, providing continuous service, faster response times, and enhanced customer experiences that help organizations stay ahead of competitors.",
         image: "/images/ind/value-04.webp",
       },
     ],

@@ -294,15 +294,15 @@ CLS скрізь 0. Решту балів на mobile стримує LCP 3D-об
    Founders, Business Owners, CTOs. Вертикальний сайдбар (`9330:5345`) і ще дві
    вкладки («Testing, Validation…», «Deployment…») у Figma приховані й тексту не
    мають — якщо вони потрібні, потрібен контент і рішення, як їх показувати.
-8. **Четверта картка «The Business Value of AI Transformation»** (`9329:4246`).
-   У макеті вона зветься `Predictive Analytics`, у текстах замовника
-   («Industries.pdf», п. 3) — `Create a Sustainable Competitive Advantage`
-   з іншим описом. Залишено варіант із макета; якщо правильний документ —
-   потрібне слово замовника (і, ймовірно, інше фото).
-9. **Заголовок героя Industries** — `iGaming development services` (з макета).
-   У текстах замовника заголовка для цієї сторінки немає, а сторінка
-   перелічує вісім галузей, серед яких iGaming не згадано. Схоже на
-   заглушку — потрібен фінальний заголовок.
+8. ~~**Четверта картка «The Business Value of AI Transformation»**~~ —
+   **вирішено.** У макеті (`9329:4246`) вона звалася `Predictive Analytics`,
+   у текстах замовника — `Create a Sustainable Competitive Advantage`.
+   Замовник обрав другий варіант; текст і фото замінено.
+9. ~~**Заголовок героя Industries**~~ — **вирішено.** Був `iGaming development
+   services` із макета, хоча сторінка перелічує вісім галузей і iGaming серед
+   них немає. На замовлення хедер узяв текст блоку-цитати («Technology and
+   innovation are the foundation of competitive advantage»), сам блок зі
+   сторінки прибрано.
 10. **Таблиця «Key factors we evaluate»** (FAQ, питання 3) у документі —
     двоколонкова таблиця «Factor / What we consider». У макеті таблиць немає,
     тому виведено списком означень (назва фактора + пояснення).
