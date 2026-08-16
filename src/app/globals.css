@@ -67,6 +67,21 @@
       transform: translateX(-50%);
     }
   }
+
+  /* Hint that a strip has more to the right (hero highlights on a phone).
+     A short nudge with a long pause — it has to be noticed once, not watched. */
+  --animate-nudge: nudge 2.4s ease-in-out infinite;
+
+  @keyframes nudge {
+    0%,
+    60%,
+    100% {
+      transform: translateX(0);
+    }
+    30% {
+      transform: translateX(8px);
+    }
+  }
 }
 
 /**

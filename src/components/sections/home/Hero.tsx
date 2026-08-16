@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
+import { HeroHighlights } from "./HeroHighlights";
 import { home } from "@/content/en/home";
 
 /**
@@ -45,16 +46,7 @@ export function Hero() {
       {/* --- Content --- */}
       <Container className="relative h-full">
         {/* Highlights */}
-        <ul className="no-scrollbar absolute top-[106px] right-0 left-4 flex snap-x snap-mandatory gap-6 overflow-x-auto sm:left-8 lg:top-[112px] lg:right-16 lg:left-16 lg:grid lg:grid-cols-[426px_426px_426px] lg:overflow-visible">
-          {home.hero.highlights.map((text) => (
-            <li
-              key={text}
-              className="w-[min(361px,calc(100vw-2rem))] shrink-0 snap-start border-b border-white/50 pt-[10px] pb-5 text-lg font-medium whitespace-pre-line lg:w-auto lg:text-xl"
-            >
-              {text}
-            </li>
-          ))}
-        </ul>
+        <HeroHighlights items={home.hero.highlights} />
 
         {/* "e v o data" wordmark (decorative) */}
         <div aria-hidden="true">

@@ -4,11 +4,22 @@
  */
 export const home = {
   hero: {
-    /** Top row of highlights (3 columns). `\n` — line break from the design. */
+    /**
+     * Top row of highlights (3 columns). `\n` — line break from the design.
+     *
+     * The Austrian flag is an asset rather than the 🇦🇹 emoji: Windows ships no
+     * country flags in Segoe UI Emoji, so the emoji shows up there as the bare
+     * letters "AT" or two empty boxes.
+     */
     highlights: [
-      "🇦🇹 Austrian company — \nhigh operational and quality standards",
-      "24/7 technical support — \nyou'll never be left alone with technical issues",
-      "10+ years \nof experience delivering AI projects",
+      {
+        flag: "at",
+        text: "Austrian company — \nhigh operational and quality standards",
+      },
+      {
+        text: "24/7 technical support — \nyou'll never be left alone with technical issues",
+      },
+      { text: "10+ years \nof experience delivering AI projects" },
     ],
     title: "From Data Audit \nto Enterprise AI Solutions",
   },
