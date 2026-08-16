@@ -67,9 +67,13 @@ export function InnerHero({
       </div>
 
       {/* --- Content --- */}
-      <Container className="relative pt-[104px] pb-16 lg:h-[600px] lg:pt-0 lg:pb-0 lg:pl-[59px]">
+      {/* The design frame is 600px tall with the breadcrumbs at 110 and the
+          heading at 247. Those are paddings and margins rather than absolute
+          offsets, so a heading longer than the two lines of the design pushes
+          the hero down instead of spilling out of it (What We Do). */}
+      <Container className="relative pt-[104px] pb-16 lg:min-h-[600px] lg:pt-[110px] lg:pl-[59px]">
         {/* Breadcrumbs (node 9376:5965) */}
-        <nav aria-label="Breadcrumb" className="lg:absolute lg:top-[110px]">
+        <nav aria-label="Breadcrumb">
           <ol className="flex items-center gap-3 text-sm">
             <li>
               <Link
@@ -90,7 +94,7 @@ export function InnerHero({
         </nav>
 
         {/* Heading and subheading (node 9376:5961) */}
-        <div className="mt-8 flex max-w-[828px] flex-col gap-5 lg:absolute lg:top-[247px] lg:mt-0 lg:w-[828px]">
+        <div className="mt-8 flex max-w-[828px] flex-col gap-5 lg:mt-[117px] lg:w-[828px]">
           <h1 className="font-serif text-[36px] leading-[1.05] whitespace-pre-line sm:text-[48px] lg:text-[64px] lg:leading-[64px]">
             {title}
           </h1>

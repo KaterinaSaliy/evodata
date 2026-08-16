@@ -3,11 +3,17 @@
  * Design: desktop node 9239:708, mobile node 9413:495.
  */
 export const whatWeDo = {
+  /**
+   * The hero carries what used to be the `Quote` block further down the page
+   * (node 9318:77595) — the block itself is gone from What We Do, so the line
+   * is said once and at the top.
+   */
   hero: {
     breadcrumb: "What we do",
-    title: "AI services: Custom Artificial Intelligence solutions",
+    title:
+      "Technology and innovation are \nthe foundation of competitive advantage.",
     subtitle:
-      "AI moves fast, but most enterprises are still stuck between strategy and execution. We help you get ahead of it with a full spectrum of AI services, scoped to your industry, infrastructure, and delivered with one goal — turning AI into your lasting competitive edge.",
+      "Organizations that successfully leverage advanced technologies are better positioned to improve efficiency, accelerate growth, and outperform their competitors.",
     actions: [
       { label: "Book a Discovery Call", href: "/about#contact" },
       { label: "Contact Us", href: "/about#contact" },

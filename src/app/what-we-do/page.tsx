@@ -14,7 +14,6 @@ import {
   type RoadmapTabContent,
 } from "@/components/sections/RoadmapPanel";
 import { Metrics } from "@/components/sections/home/Metrics";
-import { Quote } from "@/components/sections/home/Quote";
 import { VideoSection } from "@/components/sections/home/VideoSection";
 import { whatWeDo } from "@/content/en/what-we-do";
 
@@ -126,10 +125,8 @@ export default function WhatWeDoPage() {
         </Container>
       </section>
 
-      {/* Quote — the same block as on the home page */}
-      <Quote />
-
-      {/* Video */}
+      {/* Video. The quote that used to sit above it is now the heading of the
+          hero, so it is not repeated here. */}
       <VideoSection />
 
       {/* Brand band with the globe — node 9245:24503 */}
