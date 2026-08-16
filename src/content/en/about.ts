@@ -25,8 +25,6 @@ export const about = {
      */
     phoneLabel: "Phone",
     mailLabel: "Mail",
-    addressLabel: "Address",
-    address: "Warschauer Platz 11-13\n10245 Berlin",
   },
 
   /** "Technologies & Delivery Processes" — node 9337:12665. */

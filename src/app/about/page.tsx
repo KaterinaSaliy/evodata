@@ -77,14 +77,6 @@ export default function AboutPage() {
               </dd>
             </div>
 
-            <div className="flex flex-col gap-2">
-              <dt className="text-ink text-lg font-semibold lg:text-xl">
-                {contact.addressLabel}
-              </dt>
-              <dd className="text-body text-lg whitespace-pre-line lg:text-xl">
-                {contact.address}
-              </dd>
-            </div>
           </dl>
         </Container>
       </section>
