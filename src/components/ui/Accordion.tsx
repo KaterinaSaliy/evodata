@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { ChevronDownIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
@@ -84,6 +84,29 @@ export function Accordion({
 }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(defaultOpen);
   const baseId = useId();
+  const rows = useRef<(HTMLDivElement | null)[]>([]);
+
+  /**
+   * Opening one answer closes the other, and when that other one was longer
+   * and higher up the page, everything under it jumps by its whole height —
+   * the question just clicked lands somewhere off screen. So the page follows
+   * it: the answer being opened is put at the top of the view. Closing moves
+   * nothing above the question, so it is left alone.
+   */
+  const toggle = (index: number, wasOpen: boolean) => {
+    setOpenIndex(wasOpen ? null : index);
+    if (wasOpen) return;
+
+    // A frame later the panel is in the DOM and the row has its new height.
+    requestAnimationFrame(() =>
+      rows.current[index]?.scrollIntoView({
+        block: "start",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+      }),
+    );
+  };
 
   return (
     <div className={cn("w-full", className)}>
@@ -95,8 +118,13 @@ export function Accordion({
         return (
           <div
             key={item.title}
+            ref={(el) => {
+              rows.current[index] = el;
+            }}
             className={cn(
-              "border-b border-gray-200 p-6 lg:p-8",
+              // `scroll-mt` is the gap left above the question when the page
+              // scrolls to it — see `toggle`.
+              "scroll-mt-6 border-b border-gray-200 p-6 lg:scroll-mt-10 lg:p-8",
               isOpen && "bg-surface-2",
             )}
           >
@@ -106,7 +134,7 @@ export function Accordion({
                 id={buttonId}
                 aria-expanded={isOpen}
                 aria-controls={panelId}
-                onClick={() => setOpenIndex(isOpen ? null : index)}
+                onClick={() => toggle(index, isOpen)}
                 className="flex w-full cursor-pointer items-start justify-between gap-6 text-left"
               >
                 <span className="text-ink text-xl font-semibold lg:text-[24px] lg:leading-8">
