@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { Logo } from "./Logo";
 import { NavDropdown } from "./NavDropdown";
+import { NavMenuPanel } from "./NavMenuPanel";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { MenuIcon, CloseIcon, ChevronDownIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
@@ -117,7 +118,10 @@ export function Header() {
                     aria-current={isActive(item.href) ? "page" : undefined}
                     className={cn(
                       "text-base font-semibold",
-                      isActive(item.href) && "underline underline-offset-8",
+                      // The design underlines the item whose submenu is open
+                      // as well as the one for the current page.
+                      (isActive(item.href) || expanded === item.href) &&
+                        "underline underline-offset-8",
                     )}
                     onClick={() => setOpen(false)}
                   >
@@ -145,19 +149,15 @@ export function Header() {
                 </div>
 
                 {item.menu && expanded === item.href ? (
-                  <ul className="flex flex-col gap-3 pl-4">
-                    {item.menu.items.map((subItem) => (
-                      <li key={subItem}>
-                        <Link
-                          href={item.href}
-                          onClick={() => setOpen(false)}
-                          className="text-sm text-white/80 transition-colors hover:text-white"
-                        >
-                          {subItem}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <NavMenuPanel
+                    menu={item.menu}
+                    href={item.href}
+                    layout="stacked"
+                    onNavigate={() => setOpen(false)}
+                    // The panel is inset 12px from the screen in the design,
+                    // the items around it 16px — hence the pull outwards.
+                    className="-mx-1"
+                  />
                 ) : null}
               </div>
             ))}
