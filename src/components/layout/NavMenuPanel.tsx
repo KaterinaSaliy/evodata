@@ -39,22 +39,29 @@ export function NavMenuPanel({
 
   const list = (
     <ul className="flex flex-col gap-3 px-5 py-6">
-      {menu.items.map((item) => (
-        <li key={item}>
-          <Link
-            href={href}
-            onClick={onNavigate}
-            className={cn(
-              "hover:text-ink text-base font-semibold text-gray-500 transition-colors",
-              // Room to wrap on a phone; on the desktop panel the list sets
-              // the width of the whole dropdown.
-              !stacked && "whitespace-nowrap",
-            )}
-          >
-            {item}
-          </Link>
-        </li>
-      ))}
+      {menu.items.map((entry) => {
+        const item =
+          typeof entry === "string" ? { label: entry, href } : entry;
+
+        return (
+          <li key={item.label}>
+            <Link
+              href={item.href}
+              onClick={onNavigate}
+              className={cn(
+                "hover:text-ink text-base font-semibold text-gray-500 transition-colors",
+                // The list is what sets the width of the desktop panel, so it
+                // is capped: the topics of the design fit on one line under
+                // that cap (the widest is 341), a longer one wraps instead of
+                // stretching the panel across the window.
+                !stacked && "block max-w-[360px]",
+              )}
+            >
+              {item.label}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 
@@ -68,17 +75,26 @@ export function NavMenuPanel({
           stacked ? "gap-6" : "h-full w-[264px] gap-6 p-3",
         )}
       >
-        <Image
-          src={menu.image}
-          alt=""
-          width={480}
-          height={272}
-          sizes={stacked ? "(max-width: 640px) 100vw, 337px" : "240px"}
+        {/* The frame is the design's, the renders behind it come in whatever
+            proportion they were made — hence `fill`, which crops them to it
+            instead of asking each one for its own size. */}
+        <div
           className={cn(
-            "rounded-md object-cover",
+            "relative overflow-hidden rounded-md",
             stacked ? "aspect-337/200 w-full" : "h-[136px] w-[240px]",
           )}
-        />
+        >
+          <Image
+            src={menu.image}
+            alt=""
+            fill
+            sizes={stacked ? "(max-width: 640px) 100vw, 337px" : "240px"}
+            // The renders are covered in a fine pattern of dots, which AVIF at
+            // the default 75 turns to mush — see README, «Якість зображень».
+            quality={90}
+            className="object-cover"
+          />
+        </div>
 
         <div
           className={cn(

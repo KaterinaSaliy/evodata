@@ -81,8 +81,9 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Technologies & Delivery Processes — node 9337:12665 */}
-      <section className="bg-surface pt-16 lg:pt-24">
+      {/* Technologies & Delivery Processes — node 9337:12665.
+          The ids from here down are what the About us menu points at. */}
+      <section id="technologies" className="bg-surface pt-16 lg:pt-24">
         <Container className="flex flex-col gap-10 lg:gap-16">
           <div className="flex flex-col gap-6">
             <SectionHeading className="max-w-[940px]">
@@ -146,7 +147,7 @@ export default function AboutPage() {
 
         {/* Engineering Principles — node 9372:754: text on the left half,
             the glass object bleeding off the right edge. */}
-        <div className="bg-surface-2 mt-16 lg:mt-24">
+        <div id="principles" className="bg-surface-2 mt-16 lg:mt-24">
           <div className="mx-auto flex w-full max-w-[1440px] flex-col lg:flex-row">
             <div className="flex flex-col gap-6 px-4 py-16 sm:px-8 lg:w-1/2 lg:py-24 lg:pr-20 lg:pl-16">
               <h3 className="text-ink font-serif text-[28px] leading-[1.15] tracking-[-0.02em] sm:text-[36px] lg:text-[48px] lg:leading-[60px]">
@@ -180,7 +181,7 @@ export default function AboutPage() {
       <BrandBand title={band.title} note={band.note} />
 
       {/* Our Most In-Demand AI Solutions — node 9337:12674 */}
-      <section className="bg-surface-2 py-16 lg:py-24">
+      <section id="solutions" className="bg-surface-2 py-16 lg:py-24">
         <Container className="flex flex-col gap-6">
           <SectionHeading className="max-w-[940px]">
             {inDemand.title}
@@ -274,7 +275,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why choose evodata — node 9337:12599 */}
-      <section className="bg-surface-2 py-16 lg:py-24">
+      <section id="why-evodata" className="bg-surface-2 py-16 lg:py-24">
         <Container className="flex flex-col gap-10 lg:gap-16">
           <SectionHeading>{whyChoose.title}</SectionHeading>
           <FeatureCards cards={whyChoose.cards} variant="object" />

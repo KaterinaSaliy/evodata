@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { NavItem } from "@/config/site";
 import { NavMenuPanel } from "./NavMenuPanel";
@@ -22,7 +22,32 @@ type NavDropdownProps = {
 export function NavDropdown({ item, isActive }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const panelId = useId();
+
+  /**
+   * The panel hangs centred under its item, which runs it off the window for
+   * the items at the ends of the menu. Nudged back by however much it sticks
+   * out — written straight to the node, since this is the browser's own
+   * geometry rather than anything React needs to know about.
+   */
+  useLayoutEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+
+    if (!open) {
+      el.style.transform = "";
+      return;
+    }
+
+    const margin = 16;
+    el.style.transform = "translateX(-50%)";
+    const { left, right } = el.getBoundingClientRect();
+    const over = right - (window.innerWidth - margin);
+    const under = margin - left;
+    const delta = over > 0 ? -over : under > 0 ? under : 0;
+    if (delta) el.style.transform = `translateX(calc(-50% + ${delta}px))`;
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -83,8 +108,11 @@ export function NavDropdown({ item, isActive }: NavDropdownProps) {
       {/* Submenu panel */}
       <div
         id={panelId}
+        ref={panelRef}
         hidden={!open}
-        className="absolute top-full left-1/2 z-50 -translate-x-1/2 pt-4"
+        // `w-max`: an absolute box is otherwise offered only the width of the
+        // menu item it hangs from, and the list would wrap to nothing.
+        className="absolute top-full left-1/2 z-50 w-max -translate-x-1/2 pt-4"
       >
         <NavMenuPanel menu={item.menu} href={item.href} />
       </div>

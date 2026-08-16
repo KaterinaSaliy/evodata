@@ -11,10 +11,12 @@ export type NavMenu = {
   description: string;
   image: string;
   /**
-   * Submenu items. The design has no dedicated pages for them,
-   * so they all point at the parent section page.
+   * Submenu items. A plain string leads to the section page itself — the
+   * design gives the topics of What We Do and Industries no pages of their
+   * own. Where the item does have somewhere of its own to go (the sections of
+   * About us), it carries its `href`.
    */
-  items: readonly string[];
+  items: readonly (string | { label: string; href: string })[];
 };
 
 export type NavItem = {
@@ -38,7 +40,7 @@ export const siteConfig = {
   // This file does (the header is interactive), so anything in it ends up in
   // the JS bundle where a harvester can read it.
 
-  /** Main navigation (header). Two items carry a dropdown submenu. */
+  /** Main navigation (header). Every item but Home carries a dropdown submenu. */
   nav: [
     { label: "Home", href: "/" },
     {
@@ -79,8 +81,50 @@ export const siteConfig = {
         ],
       },
     },
-    { label: "About us", href: "/about" },
-    { label: "FAQ", href: "/faq" },
+    {
+      label: "About us",
+      href: "/about",
+      menu: {
+        title: "About Us",
+        description: "See how we work, what we build with and who to talk to",
+        image: "/images/nav/menu-about.webp",
+        // The only menu whose items lead somewhere of their own: these are
+        // the sections of the page, and each carries an id.
+        items: [
+          { label: "Get in touch", href: "/about#contact" },
+          {
+            label: "Technologies & Delivery Processes",
+            href: "/about#technologies",
+          },
+          { label: "Engineering Principles", href: "/about#principles" },
+          {
+            label: "Our Most In-Demand AI Solutions",
+            href: "/about#solutions",
+          },
+          { label: "Why choose evodata", href: "/about#why-evodata" },
+        ],
+      },
+    },
+    {
+      label: "FAQ",
+      href: "/faq",
+      menu: {
+        title: "FAQ",
+        description: "Find answers to the questions we hear most often",
+        image: "/images/nav/menu-faq.webp",
+        // The seven topics of the page. The panel that answers them is picked
+        // on the page itself, so these lead to it as a whole.
+        items: [
+          "Our Team Is Already Overloaded",
+          "AI without disrupting production",
+          "Validate first, invest later",
+          "Enterprise AI without compliance risk",
+          "Reduce operational costs, increase capacity, and free employees for higher-value work",
+          "How are data selected and analyzed to build effective data science solutions",
+          "What technologies and tools are used to deliver data science solutions",
+        ],
+      },
+    },
   ] satisfies NavItem[],
 
   /**
