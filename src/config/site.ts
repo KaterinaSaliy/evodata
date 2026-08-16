@@ -1,5 +1,5 @@
 /**
- * Global site structure: brand, contacts, navigation, social links.
+ * Global site structure: brand, contacts, navigation.
  * Navigation labels are in English (the current locale); once more languages
  * are added they should move into the content dictionaries (see `src/config/i18n.ts`).
  */
@@ -37,11 +37,6 @@ export const siteConfig = {
   // `src/config/contacts.ts`, which must never reach a client component.
   // This file does (the header is interactive), so anything in it ends up in
   // the JS bundle where a harvester can read it.
-
-  social: {
-    instagram: "https://instagram.com/",
-    facebook: "https://facebook.com/",
-  },
 
   /** Main navigation (header). Two items carry a dropdown submenu. */
   nav: [

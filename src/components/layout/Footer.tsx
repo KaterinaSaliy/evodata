@@ -6,14 +6,9 @@ import { common } from "@/content/en/common";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 
-const social = [
-  { label: "Instagram", href: siteConfig.social.instagram },
-  { label: "Facebook", href: siteConfig.social.facebook },
-];
-
 /**
  * Site footer — node 9423:1481 (brand background, py 96).
- * Top row: CTA + contacts + navigation/social; bottom row: the large wordmark
+ * Top row: CTA + contacts + navigation; bottom row: the large wordmark
  * (858×198 in the design) and the copyright line.
  */
 export function Footer() {
@@ -52,42 +47,18 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Navigation and social links */}
-          <div className="flex flex-col gap-12 lg:w-[100px] lg:gap-[105px]">
-            <nav className="flex flex-col gap-[3px] text-lg font-medium">
-              {siteConfig.footerNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="transition-opacity hover:opacity-80"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-
-            <ul className="flex flex-col gap-[6px] text-base font-medium">
-              {social.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 transition-opacity hover:opacity-80"
-                  >
-                    {item.label}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/icon-arrow-up-right.svg"
-                      alt=""
-                      aria-hidden="true"
-                      className="size-[9px]"
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Navigation */}
+          <nav className="flex flex-col gap-[3px] text-lg font-medium lg:w-[100px]">
+            {siteConfig.footerNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="transition-opacity hover:opacity-80"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         {/* Bottom row: wordmark, legal links and copyright */}

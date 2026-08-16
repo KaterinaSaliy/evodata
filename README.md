@@ -54,7 +54,7 @@ npm run format       # форматування Prettier
 | Тексти сторінок | `src/content/en/*.ts` (наприклад `home.ts`) |
 | Наскрізні тексти (футер) | `src/content/en/common.ts` |
 | Телефон і e-mail | `src/config/contacts.ts` |
-| Соцмережі, пункти меню | `src/config/site.ts` |
+| Пункти меню | `src/config/site.ts` |
 | Мови | `src/config/i18n.ts` |
 | Кольори, шрифти, типографіка | `src/app/globals.css` (блок `@theme`) |
 | Зображення, відео, шрифти | `public/images`, `public/videos`, `public/fonts` |

@@ -7,8 +7,10 @@ import { faq } from "@/content/en/faq";
  *
  * `email` and `telephone` are deliberately absent: JSON-LD is the easiest thing
  * on a page for a harvester to read, so publishing them there would defeat the
- * obfuscation in `ContactLink`. Name, URL, address and profiles stay — they are
- * what search engines actually use here.
+ * obfuscation in `ContactLink`. Name, URL and address stay — they are what
+ * search engines actually use here. `sameAs` waits for real profile URLs: it
+ * means "the same organisation, elsewhere", and the links the footer used to
+ * carry were the platforms' own home pages.
  */
 export function organizationSchema(): WithContext<Organization> {
   return {
@@ -24,7 +26,6 @@ export function organizationSchema(): WithContext<Organization> {
       addressLocality: "Berlin",
       addressCountry: "DE",
     },
-    sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
   };
 }
 
