@@ -152,8 +152,7 @@ export function LegalDocument({ doc }: { doc: LegalDocumentContent }) {
                     href={`#${sectionId(section.number)}`}
                     className="text-body hover:text-brand transition-colors"
                   >
-                    <span className="text-gray-400">{section.number}. </span>
-                    {section.title}
+                    {section.number}. {section.title}
                   </a>
                 </li>
               ))}
@@ -174,9 +173,11 @@ export function LegalDocument({ doc }: { doc: LegalDocumentContent }) {
                 // Keeps the heading clear of the header when jumped to.
                 className="flex scroll-mt-24 flex-col gap-4 pt-8"
               >
+                {/* The number is part of the heading, not decoration: it is
+                    what the contents list points at, so it reads in the same
+                    colour as the title. */}
                 <h2 className="text-ink text-xl font-semibold lg:text-[24px] lg:leading-8">
-                  <span className="text-gray-400">{section.number}. </span>
-                  {section.title}
+                  {section.number}. {section.title}
                 </h2>
                 <Blocks blocks={section.blocks} />
               </section>
