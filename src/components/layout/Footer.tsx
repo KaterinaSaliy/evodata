@@ -44,6 +44,10 @@ export function Footer() {
                 copiedLabel={common.contact.copied}
                 className="w-fit border-b border-white/70 pb-[13px] text-[28px] leading-[30px] font-medium transition-opacity hover:opacity-80 lg:text-[36px]"
               />
+              {/* Plain text, not a `ContactLink`: a city is not worth hiding
+                  from a harvester, and it reads under the rule as the line
+                  that says where those two reach. */}
+              <p className="text-lg font-medium">{contacts.city}</p>
             </div>
           </div>
 

@@ -12,14 +12,17 @@
  * One rule: a value must not contain "~", "^" or "*" — `scramble` uses those
  * three as stand-ins for "@", "." and "+".
  */
+const email = "dh@evo-data.com";
+
 export const contacts = {
-  email: "hello@evodata.com",
-  /** Data controller, named in the Privacy Policy. */
-  dataProtectionEmail: "dh@evo-data.com",
-  phone: "(123) 098-654",
+  email,
+  /** Data controller, named in the Privacy Policy — the same mailbox today. */
+  dataProtectionEmail: email,
+  phone: "+43 670 1835013",
   /** Dial string for the `tel:` link — digits and a leading plus only. */
-  phoneHref: "+123098654",
-  address: "Warschauer Platz 11-13, 10245 Berlin",
+  phoneHref: "+436701835013",
+  /** Shown under the contacts in the footer. */
+  city: "Vienna",
 } as const;
 
 export { scramble } from "@/lib/scramble";
