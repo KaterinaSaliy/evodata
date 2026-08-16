@@ -14,10 +14,7 @@ export const whatWeDo = {
       "Technology and innovation are \nthe foundation of competitive advantage.",
     subtitle:
       "Organizations that successfully leverage advanced technologies are better positioned to improve efficiency, accelerate growth, and outperform their competitors.",
-    actions: [
-      { label: "Book a Discovery Call", href: "/about#contact" },
-      { label: "Contact Us", href: "/about#contact" },
-    ],
+    actions: [{ label: "Contact Us", href: "/about#contact" }],
   },
 
   /**
