@@ -4,6 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { BackToTop } from "@/components/ui/BackToTop";
 import { Analytics } from "@/components/analytics/Analytics";
 
 // Typefaces from the Figma design. Self-hosted via next/font — no external
@@ -61,6 +62,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <BackToTop />
         <Analytics />
       </body>
     </html>

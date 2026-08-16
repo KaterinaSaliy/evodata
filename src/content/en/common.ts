@@ -20,6 +20,9 @@ export const common = {
     emailLabel: "Show and copy the e-mail address",
     copied: "Copied",
   },
+
+  /** The only name the floating control has — it is an icon otherwise. */
+  backToTop: "Back to top",
 } as const;
 
 export type CommonContent = typeof common;
