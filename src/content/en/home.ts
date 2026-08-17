@@ -48,40 +48,52 @@ export const home = {
       },
       {
         number: "02",
-        title: "Natural Language Processing",
+        title: "Predictive Analytics & Data Intelligence",
         description:
-          "Building NLP solutions for sentiment analysis, text summarization, entity recognition, and language translation.\nDeveloping chatbots and virtual assistants for customer service and support.",
+          "Transform large volumes of business data into actionable insights. Our AI-driven analytics solutions identify patterns, forecast future trends, and support strategic decision-making, enabling organizations to anticipate opportunities, mitigate risks, and drive sustainable growth.",
         image: "/images/slides/slide-02.webp",
       },
       {
         number: "03",
-        title: "Computer Vision",
+        title: "AI-Powered Content Generation",
         description:
-          "Creating computer vision solutions for image and video analysis, object detection, facial recognition, and optical character recognition (OCR).\nImplementing solutions for quality control, security surveillance, and autonomous vehicles.",
+          "Accelerate content production with AI systems capable of generating high-quality images, videos, and creative assets tailored to the business's needs. Generated content can be used across websites, digital advertising campaigns, presentations, social media, and other marketing channels while maintaining brand consistency and reducing production costs.",
         image: "/images/slides/slide-03.webp",
       },
       {
         number: "04",
-        title: "Speech Recognition",
+        title: "Marketing Automation & Personalization",
         description:
-          "Developing speech recognition systems for transcription, voice commands, and voice-enabled interfaces. Building speech synthesis solutions for text-to-speech applications.",
+          "Enhance customer engagement through intelligent marketing automation. AI-powered solutions enable personalized customer experiences, automated campaign management, audience segmentation, and data-driven optimization to improve conversion rates and marketing performance.",
         image: "/images/slides/slide-04.webp",
       },
       {
         number: "05",
-        title: "Data Analysis",
+        title: "Intelligent Decision Support Systems",
         description:
-          "Providing data analytics services to extract insights from large datasets using AI and machine learning techniques.",
+          "Empower executives and operational teams with AI-based decision support tools that provide data-driven recommendations, scenario modeling, risk assessment, and outcome forecasting. These solutions help organizations make faster, more informed decisions with greater confidence.",
         image: "/images/slides/slide-05.webp",
       },
       {
         number: "06",
-        title: "AI Consulting and Strategy",
+        title: "Employee Training & Workforce Development",
         description:
-          "Offering consultancy services to help businesses understand AI opportunities and develop AI strategies aligned with their goals. Conducting AI readiness assessments and providing guidance on implementation and integration.",
+          "Use AI to create personalized learning experiences, training materials, and employee development programs. Intelligent learning platforms can accelerate onboarding, improve knowledge retention, identify skill gaps, and support continuous professional development across the organization.",
         image: "/images/slides/slide-06.webp",
       },
     ],
+    /** Closes the block, under the slider — client copy, not in the design. */
+    impact: {
+      title: "Business Impact",
+      items: [
+        "Increased operational efficiency through automation",
+        "Improved decision-making with predictive insights",
+        "Faster content creation and marketing execution",
+        "Enhanced customer engagement and personalization",
+        "Reduced operational costs and manual workload",
+        "Scalable AI capabilities aligned with long-term business objectives",
+      ],
+    },
   },
 
   /** "We develop and implement custom AI solutions" strip (node 9165:260193). */

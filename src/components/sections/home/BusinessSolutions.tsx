@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
+import { RichBlocks } from "@/components/ui/RichBlocks";
 import { SlideDeck } from "@/components/ui/SlideDeck";
 import { home } from "@/content/en/home";
 
@@ -68,6 +69,17 @@ export function BusinessSolutions() {
           </article>
         ))}
       </SlideDeck>
+
+      {/* "Business Impact" — client copy that closes the block; the design
+          ends it with the slider. */}
+      <Container className="flex flex-col gap-6 pt-4 lg:pt-8">
+        <h3 className="text-ink text-xl font-semibold lg:text-[24px] lg:leading-8">
+          {home.solutions.impact.title}
+        </h3>
+        <RichBlocks
+          blocks={[{ type: "bullets", items: home.solutions.impact.items }]}
+        />
+      </Container>
     </section>
   );
 }
