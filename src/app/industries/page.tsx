@@ -144,8 +144,14 @@ export default function IndustriesPage() {
                 alt=""
                 width={720}
                 height={888}
-                sizes="(max-width: 1024px) 100vw, 420px"
-                className="h-[260px] w-full rounded-xl object-cover sm:h-[360px] lg:h-[480px] lg:w-[420px] lg:shrink-0"
+                sizes="(max-width: 460px) 100vw, 420px"
+                // 420×480 is the frame of the design, kept as a ratio: below
+                // `lg` the picture takes the whole width, and a fixed height
+                // there turned the frame landscape, so `object-cover` cut the
+                // object out of these portrait renders. The width is capped at
+                // the designed 420 so a tablet does not blow the object up to
+                // the full column either.
+                className="aspect-420/480 mx-auto w-full max-w-[420px] rounded-xl object-cover lg:mx-0 lg:shrink-0"
               />
             </div>
           ))}
