@@ -43,10 +43,16 @@ export function FeatureCards({
             alt=""
             width={isPhoto ? 1032 : 738}
             height={isPhoto ? 584 : 738}
-            sizes={isPhoto ? "(max-width: 640px) 100vw, 516px" : "369px"}
+            // Two columns from `sm` up, one below it.
+            sizes={isPhoto ? "(max-width: 640px) 100vw, 50vw" : "369px"}
             className={
               isPhoto
-                ? "h-[220px] w-full rounded-xl object-cover sm:h-[292px]"
+                ? // 516×292 is the design's frame, kept as a ratio rather than
+                  // a fixed height: the column is wider than 516 on a large
+                  // screen and narrower on a small one, and a fixed height
+                  // would make `object-cover` eat the photo — the top and the
+                  // bottom at 1440, the sides between 640 and 1024.
+                  "aspect-516/292 w-full rounded-xl object-cover"
                 : "size-[240px] object-contain lg:size-[369px]"
             }
           />
